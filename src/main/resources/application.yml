@@ -1,15 +1,15 @@
-#mybatis:
-#  mapper-locations: classpath:/mybatis/mapper/*.xml
-#  type-aliases-package: com.zhaofeng.deliverymanagement.pojo
-#  configuration:
-#    map-underscore-to-camel-case: true
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+  type-aliases-package: com.zhaofeng.douban_analysys.pojo
+  configuration:
+    map-underscore-to-camel-case: true
 
 spring:
   datasource:
     username: root
     password: 123456
-    #url: jdbc:mysql://localhost:3306/deliverymanagement?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
-#    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/douban_analysys?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
 #    schema:
 #      - classpath:data.sql
     initialization-mode: always
