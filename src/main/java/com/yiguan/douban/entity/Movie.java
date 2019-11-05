@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class Movie {
 
-  private long mid;
+  private Long mid;
   private String name;
   private String director;
   private String screenwriter;
@@ -14,11 +14,11 @@ public class Movie {
   private String countriesRegions;
   private String language;
   private java.sql.Timestamp date;
-  private long length;
+  private Long length;
   private String otherName;
   private String imDb;
-  private long shortCommentNumber;
-  private long commentNumber;
-  private double score;
+  private Long shortCommentNumber;
+  private Long commentNumber;
+  private Double score;
 
 }

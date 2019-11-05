@@ -5,8 +5,10 @@ import lombok.Data;
 @Data
 public class Address {
 
-  private long id;
+  private Long id;
   private String name;
-  private long fid;
+  private Long fid;
+
+
 
 }

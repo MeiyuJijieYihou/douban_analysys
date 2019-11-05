@@ -3,7 +3,7 @@ package com.yiguan.douban.entity;
 
 public class Book {
 
-  private long bookId;
+  private Long bookId;
   private String bookAuthor;
   private String bookPress;
   private String bookProducers;
@@ -11,8 +11,8 @@ public class Book {
   private String bookOriginalname;
   private String bookTranslator;
   private java.sql.Timestamp bookYear;
-  private long bookPages;
-  private long bookPricing;
+  private Long bookPages;
+  private Long bookPricing;
   private String bookBinding;
   private String bookSeries;
   private String bookIsbn;
