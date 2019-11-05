@@ -8,7 +8,5 @@ package com.yiguan.douban.controller;
  */
 
 public class UserController {
-    public void sayHello(){
-        System.out.println("hello");
-    }
+
 }
