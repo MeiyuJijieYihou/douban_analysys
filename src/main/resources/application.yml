@@ -2,7 +2,7 @@ server:
   port: 8091
 
 mybatis:
-  mapper-locations: classpath:/mapper/*.xml
+  mapper-locations: classpath:/mybatis/mapper/*.xml
   type-aliases-package: com.zhaofeng.douban_analysys.pojo
   configuration:
     map-underscore-to-camel-case: true
@@ -10,8 +10,8 @@ mybatis:
 spring:
   datasource:
     username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/douban_analysys?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    password: YiGuanXYZ.@()85258638
+    url: jdbc:mysql://118.25.133.235:3306/douban_analysys?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
 #    schema:
 #      - classpath:data.sql
