@@ -25,7 +25,7 @@ public class Book {
   /**
    * 出品方
    */
-  private String bookProducers;
+  private String producers;
 
   /**
    * 副标题

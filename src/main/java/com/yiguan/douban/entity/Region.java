@@ -3,7 +3,7 @@ package com.yiguan.douban.entity;
 import lombok.Data;
 
 @Data
-public class Address {
+public class Region {
 
   /**
    *地址id
@@ -18,7 +18,7 @@ public class Address {
   /**
    * 父地址id
    */
-  private Long fid;
+  private Long parentId;
 
 
 
