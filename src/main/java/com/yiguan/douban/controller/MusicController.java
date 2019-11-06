@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author: chenfl
@@ -24,6 +24,7 @@ public class MusicController {
     @Autowired
     private MusicService musicService;
 
+
     @GetMapping("/h")
     @ApiOperation("测试显示")
     public String hello(){
@@ -36,4 +37,12 @@ public class MusicController {
         List<Music> list = musicService.findAllMusic();
         return list;
     }
+
+    @GetMapping("/get/top5")
+    public List<Map<String, Object>> top5() {
+
+        List<Map<String, Object>> top5Music = musicService.findTop5Music();
+        return top5Music;
+    }
+
 }
