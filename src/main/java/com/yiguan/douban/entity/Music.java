@@ -2,6 +2,8 @@ package com.yiguan.douban.entity;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class Music {
 
@@ -48,7 +50,7 @@ public class Music {
   /**
    *发行时间
    */
-  private java.sql.Date issueDate;
+  private Date issueDate;
 
   /**
    *出版者

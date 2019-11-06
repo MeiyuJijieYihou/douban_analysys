@@ -2,13 +2,15 @@ package com.yiguan.douban.entity;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class Movie {
 
   /**
    * 电影编号
    */
-  private Long mid;
+  private Long id;
 
   /**
    * 电影名称
@@ -48,7 +50,7 @@ public class Movie {
   /**
    * 上映日期
    */
-  private java.sql.Timestamp date;
+  private Date date;
 
   /**
    * 片长

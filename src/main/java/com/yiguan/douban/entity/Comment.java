@@ -2,6 +2,8 @@ package com.yiguan.douban.entity;
 
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * @author 18460
  */
@@ -41,7 +43,7 @@ public class Comment {
   /**
    * 评论日期
    */
-  private java.sql.Timestamp date;
+  private Date date;
 
   /**
    * 标题（非短评）
