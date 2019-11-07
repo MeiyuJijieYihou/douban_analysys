@@ -18,6 +18,11 @@ public class Book {
   private String author;
 
   /**
+   * 书名
+   */
+  private String name;
+
+  /**
    * 出版社
    */
   private String press;
