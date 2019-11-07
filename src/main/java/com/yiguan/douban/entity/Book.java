@@ -13,14 +13,14 @@ public class Book {
   private Long id;
 
   /**
-   * 作者
-   */
-  private String author;
-
-  /**
    * 书名
    */
   private String name;
+
+  /**
+   * 作者
+   */
+  private String author;
 
   /**
    * 出版社
@@ -86,5 +86,15 @@ public class Book {
    * 标签
    */
   private String sort;
+
+  /**
+   * 评分
+   */
+  private int grade;
+
+  /**
+   * 评分人数
+   */
+  private float number;
 
 }
