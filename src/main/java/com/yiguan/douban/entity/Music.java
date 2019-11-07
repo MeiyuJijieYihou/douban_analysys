@@ -65,7 +65,7 @@ public class Music {
   /**
    *ISRC(中国)
    */
-  private String ISRC;
+  private String isrc;
 
   /**
    *条形码
