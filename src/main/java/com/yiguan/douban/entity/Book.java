@@ -17,7 +17,13 @@ public class Book {
   private String bookSeries;
   private String bookIsbn;
   private String bookCover;
+  private String sort;
 
+  public String getSort(){return sort;}
+
+  public void setSort(String sort){
+    this.sort = sort;
+  }
 
   public long getBookId() {
     return bookId;
