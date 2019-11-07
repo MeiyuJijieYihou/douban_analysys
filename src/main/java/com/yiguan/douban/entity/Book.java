@@ -1,6 +1,8 @@
 package com.yiguan.douban.entity;
 
+import lombok.Data;
 
+<<<<<<< HEAD
 public class Book {
 
   private Long bookId;
@@ -82,72 +84,91 @@ public class Book {
   public String getBookTranslator() {
     return bookTranslator;
   }
+=======
+import java.util.Date;
+>>>>>>> 30cc31a5ef79bd012837eeaee735a4d54aedd71b
 
-  public void setBookTranslator(String bookTranslator) {
-    this.bookTranslator = bookTranslator;
-  }
+@Data
+public class Book {
 
+  /**
+   * 书籍编号
+   */
+  private Long id;
 
-  public java.sql.Timestamp getBookYear() {
-    return bookYear;
-  }
+  /**
+   * 作者
+   */
+  private String author;
 
-  public void setBookYear(java.sql.Timestamp bookYear) {
-    this.bookYear = bookYear;
-  }
+  /**
+   * 书名
+   */
+  private String name;
 
+  /**
+   * 出版社
+   */
+  private String press;
 
-  public long getBookPages() {
-    return bookPages;
-  }
+  /**
+   * 出品方
+   */
+  private String producers;
 
-  public void setBookPages(long bookPages) {
-    this.bookPages = bookPages;
-  }
+  /**
+   * 副标题
+   */
+  private String subtitle;
 
+  /**
+   * 原作名
+   */
+  private String originalname;
 
-  public long getBookPricing() {
-    return bookPricing;
-  }
+  /**
+   * 译者
+   */
+  private String translator;
 
-  public void setBookPricing(long bookPricing) {
-    this.bookPricing = bookPricing;
-  }
+  /**
+   * 出版年
+   */
+  private Date year;
 
+  /**
+   * 页数
+   */
+  private Long pages;
 
-  public String getBookBinding() {
-    return bookBinding;
-  }
+  /**
+   * 定价
+   */
+  private Long pricing;
 
-  public void setBookBinding(String bookBinding) {
-    this.bookBinding = bookBinding;
-  }
+  /**
+   * 装帧
+   */
+  private String binding;
 
+  /**
+   * 丛书
+   */
+  private String series;
 
-  public String getBookSeries() {
-    return bookSeries;
-  }
+  /**
+   * ISBN
+   */
+  private String isbn;
 
-  public void setBookSeries(String bookSeries) {
-    this.bookSeries = bookSeries;
-  }
+  /**
+   * 封面
+   */
+  private String cover;
 
-
-  public String getBookIsbn() {
-    return bookIsbn;
-  }
-
-  public void setBookIsbn(String bookIsbn) {
-    this.bookIsbn = bookIsbn;
-  }
-
-
-  public String getBookCover() {
-    return bookCover;
-  }
-
-  public void setBookCover(String bookCover) {
-    this.bookCover = bookCover;
-  }
+  /**
+   * 标签
+   */
+  private String sort;
 
 }

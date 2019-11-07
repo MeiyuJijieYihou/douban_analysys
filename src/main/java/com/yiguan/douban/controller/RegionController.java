@@ -1,7 +1,7 @@
 package com.yiguan.douban.controller;
 
-import com.yiguan.douban.entity.Address;
-import com.yiguan.douban.service.AddressService;
+import com.yiguan.douban.entity.Region;
+import com.yiguan.douban.service.RegionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +19,12 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/api/address")
+@RequestMapping("/api/region")
 @Api(description = "地址相关接口文档")
-public class AddressController{
+public class RegionController {
 
     @Autowired
-    private AddressService addressService;
+    private RegionService regionService;
 
     @GetMapping("/h")
     @ApiOperation("测试显示")
@@ -34,8 +34,8 @@ public class AddressController{
 
     @GetMapping("/get")
     @ApiOperation("获取所有地址")
-    public List<Address> getAddress(){
-        List<Address> list = addressService.findAddress();
+    public List<Region> getAddress(){
+        List<Region> list = regionService.findRegion();
         return list;
     }
 }

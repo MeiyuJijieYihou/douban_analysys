@@ -1,7 +1,7 @@
 package com.yiguan.douban.service;
 
 
-import com.yiguan.douban.entity.Address;
+import com.yiguan.douban.entity.Region;
 
 import java.util.List;
 
@@ -11,12 +11,12 @@ import java.util.List;
  * @Date: 2019/11/5 16:46
  * @Description:
  */
-public interface AddressService {
+public interface RegionService {
     /**
      *
      *
      * @return
      */
-    public List<Address> findAddress();
+    public List<Region> findRegion();
 
 }

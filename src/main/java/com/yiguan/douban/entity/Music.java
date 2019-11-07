@@ -2,6 +2,8 @@ package com.yiguan.douban.entity;
 
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 public class Music {
 
@@ -21,24 +23,14 @@ public class Music {
   private String name;
 
   /**
+   * 音乐别名
+   */
+  private String otherName;
+
+  /**
    * 歌手名
    */
   private String singer;
-
-  /**
-   * 播放次数
-   */
-  private Long playTimes;
-
-  /**
-   * 状态 2:排名上升  1：排名下降  0：排名不变
-   */
-  private Long status;
-
-  /**
-   * 上榜天数
-   */
-  private Long listDays;
 
   /**
    *流派风格
@@ -46,9 +38,19 @@ public class Music {
   private String style;
 
   /**
+   *专辑类型
+   */
+  private String albumType;
+
+  /**
+   *介质
+   */
+  private String medium;
+
+  /**
    *发行时间
    */
-  private java.sql.Date issueDate;
+  private Date issueDate;
 
   /**
    *出版者
@@ -61,9 +63,24 @@ public class Music {
   private Long songNumbers;
 
   /**
+   *ISRC(中国)
+   */
+  private String isrc;
+
+  /**
    *条形码
    */
   private String barcode;
+
+  /**
+   *其他版本
+   */
+  private String otherVersion;
+
+  /**
+   *相关电影
+   */
+  private String relateMovies;
 
   /**
    *简介
@@ -74,5 +91,15 @@ public class Music {
    *曲目
    */
   private String track;
+
+  /**
+   *评分
+   */
+  private Float reviewScore;
+
+  /**
+   *评分人数
+   */
+  private Long reviewNum;
 
 }
