@@ -23,7 +23,7 @@ public class MusicServiceImpl implements MusicService {
     @Override
     public List<Music> findAllMusic(){
         List<Music> list = new ArrayList<>();
-    list = musicMapper.selectAll();
+        list = musicMapper.selectAll();
         return list;
 }
 }
