@@ -5,6 +5,7 @@ import lombok.Data;
 
 public class Book {
 
+
   private Long bookId;
   private String bookAuthor;
   private String bookPress;
@@ -87,6 +88,5 @@ public class Book {
     return bookTranslator;
   }
 }
-
 
 
