@@ -2,6 +2,8 @@ package com.yiguan.douban.entity;
 
 import lombok.Data;
 
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.Date;
 
 @Data
@@ -10,6 +12,7 @@ public class Movie {
   /**
    * 电影编号
    */
+  @Id
   private Long id;
 
   /**
@@ -40,6 +43,7 @@ public class Movie {
   /**
    * 制片国家/地区
    */
+  @Transient
   private String countriesRegions;
 
   /**
@@ -50,7 +54,7 @@ public class Movie {
   /**
    * 上映日期
    */
-  private Date date;
+  private String date;
 
   /**
    * 片长

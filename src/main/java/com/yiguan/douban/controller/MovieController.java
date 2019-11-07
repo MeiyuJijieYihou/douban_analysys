@@ -4,6 +4,7 @@ import com.yiguan.douban.entity.Movie;
 import com.yiguan.douban.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,7 @@ import java.util.List;
 public class MovieController {
 
     @Autowired
-    MovieService movieService;
+    private MovieService movieService;
 
     @GetMapping("/sayHello")
     public String sayHello() {
@@ -28,8 +29,11 @@ public class MovieController {
 
     @GetMapping("/get")
     public List<Movie> getAllMovie() {
+        return movieService.findAllMovie();
+    }
 
-        List<Movie> allMovie = movieService.findAllMovie();
-        return allMovie;
+    @GetMapping("/get/{id}")
+    public Movie getMovieById(@PathVariable Integer id) {
+        return movieService.findMovieById(id);
     }
 }
