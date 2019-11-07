@@ -82,4 +82,9 @@ public class Book {
    */
   private String cover;
 
+  /**
+   * 标签
+   */
+  private String sort;
+
 }
