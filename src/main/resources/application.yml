@@ -3,7 +3,7 @@ server:
 
 mybatis:
   mapper-locations: classpath:/mybatis/mapper/*.xml
-  type-aliases-package: com.zhaofeng.douban_analysys.pojo
+  type-aliases-package: com.yiguan.douban.entity
   configuration:
     map-underscore-to-camel-case: true
 

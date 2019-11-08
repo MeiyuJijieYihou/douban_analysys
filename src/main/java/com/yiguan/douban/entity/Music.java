@@ -2,6 +2,7 @@ package com.yiguan.douban.entity;
 
 import lombok.Data;
 
+import javax.persistence.Id;
 import java.util.Date;
 
 @Data
@@ -10,6 +11,7 @@ public class Music {
   /**
    * 音乐id
    */
+  @Id
   private Long id;
 
   /**

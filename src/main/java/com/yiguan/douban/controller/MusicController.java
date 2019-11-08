@@ -7,6 +7,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
@@ -43,6 +44,12 @@ public class MusicController {
 
         List<Map<String, Object>> top5Music = musicService.findTop5Music();
         return top5Music;
+    }
+
+    @GetMapping("/get/{id}")
+    @ApiOperation("根据ID查询音乐信息")
+    public Music getMusicById(@PathVariable Integer id){
+        return  musicService.findMusicById(id);
     }
 
 }
