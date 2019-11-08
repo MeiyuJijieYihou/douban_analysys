@@ -30,7 +30,8 @@ public class MusicServiceImpl implements MusicService {
         List<Music> list = new ArrayList<>();
         list = musicMapper.selectAll();
         return list;
-}
+    }
+
 
     @Override
     public List<Map<String, Object>> findTop5Music() {
@@ -44,5 +45,11 @@ public class MusicServiceImpl implements MusicService {
         return musics;
     }
 
+
+    @Override
+    public Music findMusicById(Integer id){
+        Music music = musicMapper.selectByPrimaryKey(id);
+        return music;
+    }
 
 }

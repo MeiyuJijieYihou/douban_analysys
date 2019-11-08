@@ -26,4 +26,6 @@ public interface MusicService {
      * @return
      */
     List<Map<String, Object>> findTop5Music();
+
+    public Music findMusicById(Integer id);
 }
