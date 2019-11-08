@@ -42,4 +42,9 @@ public class MovieServiceImpl implements MovieService {
         movie.setCountriesRegions(s.toString());
         return movie;
     }
+
+    @Override
+    public List<Movie> findTop50movie(){
+        return movieMapper.select_Top50movie();
+    }
 }

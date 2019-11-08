@@ -12,4 +12,6 @@ public interface MovieService {
     List<Movie> findAllMovie();
 
     Movie findMovieById(Integer id);
+
+    List<Movie> findTop50movie();
 }

@@ -36,4 +36,9 @@ public class MovieController {
     public Movie getMovieById(@PathVariable Integer id) {
         return movieService.findMovieById(id);
     }
+
+    @GetMapping("/get/top50")
+    public List<Movie> getTop50movie() {
+        return movieService.findTop50movie();
+    }
 }
