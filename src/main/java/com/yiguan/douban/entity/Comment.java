@@ -4,9 +4,6 @@ import lombok.Data;
 
 import java.util.Date;
 
-/**
- * @author 18460
- */
 @Data
 public class Comment {
 

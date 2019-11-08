@@ -10,8 +10,12 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @author abing
- * @create 2019/11/4 下午11:20
+ * Description: 实现对电影表的操作
+ *
+ * @author LiBingxiang
+ * @version 1.0
+ * @date 2019/11/8 下午9:38
+ * @since JDK 1.8
  */
 @Service
 public class MovieServiceImpl implements MovieService {
@@ -32,8 +36,10 @@ public class MovieServiceImpl implements MovieService {
         List<String> countriesRegions = movieRegionMapper.selectCountriesRegionsByMovieId(id);
         StringBuilder s = new StringBuilder();
         for (String cr : countriesRegions) {
-            s.append(cr);
-            s.append("/");
+            if (cr != null) {
+                s.append(cr);
+                s.append("/");
+            }
         }
         if ("".contentEquals(s)) {
             return null;
@@ -41,10 +47,5 @@ public class MovieServiceImpl implements MovieService {
         s.deleteCharAt(s.length() - 1);
         movie.setCountriesRegions(s.toString());
         return movie;
-    }
-
-    @Override
-    public List<Movie> findTop50movie(){
-        return movieMapper.select_Top50movie();
     }
 }

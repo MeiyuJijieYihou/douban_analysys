@@ -4,8 +4,12 @@ import com.yiguan.douban.entity.Comment;
 import tk.mybatis.mapper.common.Mapper;
 
 /**
- * @author abing
- * @create 2019/11/4 下午11:16
+ * Description: 操作comment数据库表
+ *
+ * @author LiBingxiang
+ * @version 1.0
+ * @date 2019/11/8 下午9:57
+ * @since JDK 1.8
  */
 public interface CommentMapper extends Mapper<Comment> {
 }

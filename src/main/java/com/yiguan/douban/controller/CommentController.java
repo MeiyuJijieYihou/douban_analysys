@@ -10,10 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * @author abing
- * @create 2019/11/4 下午11:09
+ * Description: 对评论表进行操作
+ *
+ * @author LiBingxiang
+ * @version 1.0
+ * @date 2019/11/8 下午9:32
+ * @since JDK 1.8
  */
-
 @RequestMapping("/api/comment")
 @RestController
 public class CommentController {
@@ -23,7 +26,6 @@ public class CommentController {
 
     @GetMapping("/get")
     public List<Comment> getAllComment() {
-
         return commentService.findAllComment();
     }
 }

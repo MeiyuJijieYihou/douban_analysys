@@ -6,14 +6,16 @@ import com.yiguan.douban.service.CommentService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.security.PrivateKey;
 import java.util.List;
 
 /**
- * @author abing
- * @create 2019/11/4 下午11:19
+ * Description: 实现对评论表的操作
+ *
+ * @author LiBingxiang
+ * @version 1.0
+ * @date 2019/11/8 下午9:41
+ * @since JDK 1.8
  */
-
 @Service
 public class CommentServiceImpl implements CommentService {
 
@@ -22,8 +24,6 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public List<Comment> findAllComment() {
-
-        List<Comment> comments = commentMapper.selectAll();
-        return comments;
+        return commentMapper.selectAll();
     }
 }

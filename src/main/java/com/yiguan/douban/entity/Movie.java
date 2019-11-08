@@ -4,7 +4,6 @@ import lombok.Data;
 
 import javax.persistence.Id;
 import javax.persistence.Transient;
-import java.util.Date;
 
 @Data
 public class Movie {

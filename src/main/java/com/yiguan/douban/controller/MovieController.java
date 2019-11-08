@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * @author abing
- * @create 2019/11/4 下午11:08
+ * Description: 对电影表进行操作
+ *
+ * @author LiBingxiang
+ * @version 1.0
+ * @date 2019/11/8 下午9:30
+ * @since JDK 1.8
  */
-
 @RestController
 @RequestMapping("/api/movie")
 public class MovieController {
@@ -35,10 +38,5 @@ public class MovieController {
     @GetMapping("/get/{id}")
     public Movie getMovieById(@PathVariable Integer id) {
         return movieService.findMovieById(id);
-    }
-
-    @GetMapping("/get/top50")
-    public List<Movie> getTop50movie() {
-        return movieService.findTop50movie();
     }
 }
