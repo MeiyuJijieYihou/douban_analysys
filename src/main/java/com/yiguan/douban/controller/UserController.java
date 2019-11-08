@@ -33,7 +33,7 @@ public class UserController {
 
     @GetMapping("/get")
     @ApiOperation("获取所有用户信息")
-    public List<User> getAllUser(){
+    public List<User> getAllUser() {
         List<User> list = userService.findAllUser();
         return list;
     }
