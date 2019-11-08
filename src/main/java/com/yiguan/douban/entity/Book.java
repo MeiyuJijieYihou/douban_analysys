@@ -61,7 +61,7 @@ public class Book {
   /**
    * 书的定价
    */
-  private long pricing;
+  private float pricing;
 
   /**
    * 书的装帧
@@ -189,11 +189,11 @@ public class Book {
   }
 
 
-  public long getPricing() {
+  public float getPricing() {
     return pricing;
   }
 
-  public void setPricing(long pricing) {
+  public void setPricing(float pricing) {
     this.pricing = pricing;
   }
 
