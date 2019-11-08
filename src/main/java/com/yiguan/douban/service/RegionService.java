@@ -14,9 +14,15 @@ import java.util.List;
 public interface RegionService {
     /**
      *
-     *
+     *获取所有的地址信息
      * @return
      */
     public List<Region> findRegion();
 
+    /**
+     * 通过id获取地址信息
+     * @param id
+     * @return
+     */
+    public Region getRegionById(Integer id);
 }
