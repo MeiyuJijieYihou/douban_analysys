@@ -29,4 +29,9 @@ public class BookServiceImpl implements BookService {
         return list;
     }
 
+    @Override
+    public Book findBookById(Integer id) {
+        Book book = bookMapper.selectByPrimaryKey(id);
+        return book;
+    }
 }
