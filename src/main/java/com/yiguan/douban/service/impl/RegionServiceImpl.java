@@ -28,4 +28,10 @@ public class RegionServiceImpl implements RegionService {
         list = regionMapper.selectAll();
         return list;
     }
+
+    @Override
+    public Region getRegionById(Integer id){
+        Region region = regionMapper.selectByPrimaryKey(id);
+        return region;
+    }
 }
