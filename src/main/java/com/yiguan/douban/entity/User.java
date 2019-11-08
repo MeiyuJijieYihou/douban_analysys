@@ -2,12 +2,15 @@ package com.yiguan.douban.entity;
 
 import lombok.Data;
 
+import javax.persistence.Id;
+
 @Data
 public class User {
 
   /**
    * 用户id
    */
+  @Id
   private Long id;
 
   /**
