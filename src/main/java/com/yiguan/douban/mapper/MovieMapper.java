@@ -3,6 +3,8 @@ package com.yiguan.douban.mapper;
 import com.yiguan.douban.entity.Movie;
 import tk.mybatis.mapper.common.Mapper;
 
+import java.util.List;
+
 /**
  * Description: 操作movie数据库表
  *
@@ -12,4 +14,7 @@ import tk.mybatis.mapper.common.Mapper;
  * @since JDK 1.8
  */
 public interface MovieMapper extends Mapper<Movie> {
+
+    List<Movie> selectAllMovies();
+
 }

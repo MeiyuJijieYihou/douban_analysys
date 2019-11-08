@@ -5,7 +5,7 @@ import com.yiguan.douban.entity.Movie;
 import java.util.List;
 
 /**
- * Description: 定义了操作电影表的方法
+ * Description: 定义了操作评论表的方法
  *
  * @author LiBingxiang
  * @version 1.0

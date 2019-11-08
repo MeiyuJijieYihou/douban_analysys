@@ -2,4 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yiguan.douban.mapper.MovieMapper">
 
+    <resultMap id="MovieRegion" type="com.yiguan.douban.entity.Movie">
+        <id column="id" property="id"/>
+        <collection property="countriesRegions" select="com.yiguan.douban.mapper.MovieRegionMapper.selectCountriesRegionsByMovieId" column="id">
+        </collection>
+    </resultMap>
+    
+    <select id="selectAllMovies" resultMap="MovieRegion">
+        SELECT
+            id,
+            name,
+            director,
+            screenwriter,
+            starring,
+            type,
+            language,
+            date,
+            length,
+            other_name,
+            Im_db,
+            short_comment_number,
+            comment_number,
+            score,
+            score_number
+        FROM
+            movie
+    </select>
 </mapper>

@@ -6,10 +6,9 @@
         SELECT
             r.name
         FROM
-            movie_region mr
-        LEFT JOIN
+            movie_region mr,
             region r
-        ON
+        WHERE
             mr.movie_id = #{id}
         AND
             mr.region_id = r.id

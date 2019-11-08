@@ -27,25 +27,13 @@ public class MovieServiceImpl implements MovieService {
 
     @Override
     public List<Movie> findAllMovie() {
-        return movieMapper.selectAll();
+        return movieMapper.selectAllMovies();
     }
 
     @Override
     public Movie findMovieById(Integer id) {
         Movie movie = movieMapper.selectByPrimaryKey(id);
-        List<String> countriesRegions = movieRegionMapper.selectCountriesRegionsByMovieId(id);
-        StringBuilder s = new StringBuilder();
-        for (String cr : countriesRegions) {
-            if (cr != null) {
-                s.append(cr);
-                s.append("/");
-            }
-        }
-        if ("".contentEquals(s)) {
-            return null;
-        }
-        s.deleteCharAt(s.length() - 1);
-        movie.setCountriesRegions(s.toString());
+        movie.setCountriesRegions(movieRegionMapper.selectCountriesRegionsByMovieId(id));
         return movie;
     }
 }
