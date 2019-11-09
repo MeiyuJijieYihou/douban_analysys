@@ -75,7 +75,6 @@ public class MusicServiceImpl implements MusicService {
             row1.createCell(3).setCellValue((music.getIssueDate().toString()));
             row1.createCell(4).setCellValue(music.getCommentNumber());
             rowNum++;
-            System.out.println(music.getIssueDate());
         }
 
         // 根据表名创建表，并相应
