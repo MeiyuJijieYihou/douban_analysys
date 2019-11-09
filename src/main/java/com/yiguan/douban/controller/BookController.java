@@ -2,6 +2,7 @@ package com.yiguan.douban.controller;
 
 import com.yiguan.douban.entity.Book;
 import com.yiguan.douban.service.BookService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import java.util.List;
  * @Author: Function
  * @Date: 2019/11/5 19:10
  */
+@Slf4j
 @RestController
 @RequestMapping("/api/book")
 public class BookController {
@@ -38,6 +40,7 @@ public class BookController {
 
     @GetMapping("/get/{id}")
     public Book findBookById(@PathVariable Integer id){
+        log.info("id: " + id);
         return bookService.findBookById(id);
     }
 }
