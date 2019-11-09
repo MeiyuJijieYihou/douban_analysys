@@ -1,11 +1,10 @@
 package com.yiguan.douban.service;
 
 import com.yiguan.douban.entity.Music;
-import org.apache.ibatis.annotations.Select;
-import org.mapstruct.Mapper;
+import com.yiguan.douban.pojo.Top5CommentMusicPojo;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author: Thomas chenfl
@@ -22,10 +21,18 @@ public interface MusicService {
     public List<Music> findAllMusic();
 
     /**
-     * Get top 5 comment musics
+     * 评论榜前5 的音乐
+     * 本地模拟数据库测试成功，由于该项目连接数据库还没有足够数据，暂时查出数据为空
      * @return
      */
-    List<Map<String, Object>> findTop5Music();
+    List<Top5CommentMusicPojo> findTop5CommentMusic();
 
-    public Music findMusicById(Integer id);
+    /**
+     * 导出评论榜前5 的数据到Excel表中
+     * 本地模拟数据库测试成功，由于该项目连接数据库还没有足够数据，暂时查出数据为空
+     * @return
+     */
+    boolean top5CommentMusicToExcel(HttpServletResponse response);
+
+    Music findMusicById(Integer id);
 }

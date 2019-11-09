@@ -2,6 +2,7 @@ package com.yiguan.douban.controller;
 
 
 import com.yiguan.douban.entity.Music;
+import com.yiguan.douban.pojo.Top5CommentMusicPojo;
 import com.yiguan.douban.service.MusicService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -10,8 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author: chenfl
@@ -40,16 +42,28 @@ public class MusicController {
     }
 
     @GetMapping("/get/top5")
-    public List<Map<String, Object>> top5() {
+    @ApiOperation("查询评论排名前五的musics")
+    public List<Top5CommentMusicPojo> top5() {
 
-        List<Map<String, Object>> top5Music = musicService.findTop5Music();
-        return top5Music;
+        List<Top5CommentMusicPojo> top5CommentMusic = musicService.findTop5CommentMusic();
+        return top5CommentMusic;
     }
 
     @GetMapping("/get/{id}")
     @ApiOperation("根据ID查询音乐信息")
     public Music getMusicById(@PathVariable Integer id){
         return  musicService.findMusicById(id);
+    }
+
+    @GetMapping("/get/top5ToExcel")
+    @ApiOperation("导出评论前5的musics到Excel中")
+    public String top5ToExcel(HttpServletResponse response) {
+
+        boolean b = musicService.top5CommentMusicToExcel(response);
+        if (b) {
+            return "Success";
+        }
+        return "Failure";
     }
 
 }

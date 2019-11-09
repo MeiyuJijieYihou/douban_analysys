@@ -85,6 +85,13 @@
 			<version>2.1.3.RELEASE</version>
 		</dependency>
 
+		<!-- 导出数据到Excel的依赖 -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.17</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
