@@ -51,7 +51,7 @@ public class Book {
   /**
    * 书的出版年
    */
-  private java.sql.Timestamp year;
+  private String year;
 
   /**
    * 书的页数
@@ -171,11 +171,11 @@ public class Book {
   }
 
 
-  public java.sql.Timestamp getYear() {
+  public String  getYear() {
     return year;
   }
 
-  public void setYear(java.sql.Timestamp year) {
+  public void setYear(String year) {
     this.year = year;
   }
 

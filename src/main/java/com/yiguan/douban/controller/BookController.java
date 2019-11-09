@@ -40,7 +40,6 @@ public class BookController {
 
     @GetMapping("/get/{id}")
     public Book findBookById(@PathVariable Integer id){
-        log.info("id: " + id);
         return bookService.findBookById(id);
     }
 }
