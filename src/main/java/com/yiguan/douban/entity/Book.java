@@ -11,7 +11,7 @@ public class Book {
    * 书籍id
    */
   @Id
-  private long id;
+  private Long id;
 
   /**
    * 书名
@@ -91,173 +91,11 @@ public class Book {
   /**
    * 书的评分
    */
-  private double grade;
+  private Double grade;
 
   /**
    * 书的评价人数
    */
-  private long number;
-
-
-  public long getId() {
-    return id;
-  }
-
-  public void setId(long id) {
-    this.id = id;
-  }
-
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public String getAuthor() {
-    return author;
-  }
-
-  public void setAuthor(String author) {
-    this.author = author;
-  }
-
-
-  public String getPress() {
-    return press;
-  }
-
-  public void setPress(String press) {
-    this.press = press;
-  }
-
-
-  public String getProducers() {
-    return producers;
-  }
-
-  public void setProducers(String producers) {
-    this.producers = producers;
-  }
-
-
-  public String getSubtitle() {
-    return subtitle;
-  }
-
-  public void setSubtitle(String subtitle) {
-    this.subtitle = subtitle;
-  }
-
-
-  public String getOriginalname() {
-    return originalname;
-  }
-
-  public void setOriginalname(String originalname) {
-    this.originalname = originalname;
-  }
-
-
-  public String getTranslator() {
-    return translator;
-  }
-
-  public void setTranslator(String translator) {
-    this.translator = translator;
-  }
-
-
-  public String  getYear() {
-    return year;
-  }
-
-  public void setYear(String year) {
-    this.year = year;
-  }
-
-
-  public long getPages() {
-    return pages;
-  }
-
-  public void setPages(long pages) {
-    this.pages = pages;
-  }
-
-
-  public float getPricing() {
-    return pricing;
-  }
-
-  public void setPricing(float pricing) {
-    this.pricing = pricing;
-  }
-
-
-  public String getBinding() {
-    return binding;
-  }
-
-  public void setBinding(String binding) {
-    this.binding = binding;
-  }
-
-
-  public String getSeries() {
-    return series;
-  }
-
-  public void setSeries(String series) {
-    this.series = series;
-  }
-
-
-  public String getIsbn() {
-    return isbn;
-  }
-
-  public void setIsbn(String isbn) {
-    this.isbn = isbn;
-  }
-
-
-  public String getCover() {
-    return cover;
-  }
-
-  public void setCover(String cover) {
-    this.cover = cover;
-  }
-
-
-  public String getSort() {
-    return sort;
-  }
-
-  public void setSort(String sort) {
-    this.sort = sort;
-  }
-
-
-  public double getGrade() {
-    return grade;
-  }
-
-  public void setGrade(double grade) {
-    this.grade = grade;
-  }
-
-
-  public long getNumber() {
-    return number;
-  }
-
-  public void setNumber(long number) {
-    this.number = number;
-  }
+  private Long number;
 
 }
