@@ -15,6 +15,14 @@ import java.util.List;
  */
 public interface MovieMapper extends Mapper<Movie> {
 
+    /* 
+     * @description 查询所有的电影信息
+     * 
+     * @params []
+     * @return java.util.List<com.yiguan.douban.entity.Movie>
+     * @author LiBingxiang
+     * @date 2019/11/10 上午11:40
+     */
     List<Movie> selectAllMovies();
 
 }

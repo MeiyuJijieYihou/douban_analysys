@@ -8,11 +8,11 @@ public class MovieRegion {
   /**
    * 电影编号
    */
-  private long movieId;
+  private Long movieId;
 
   /**
    * 地区编号
    */
-  private long regionId;
+  private Long regionId;
 
 }

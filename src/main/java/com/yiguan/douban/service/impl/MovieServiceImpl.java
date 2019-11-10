@@ -1,6 +1,7 @@
 package com.yiguan.douban.service.impl;
 
 import com.yiguan.douban.entity.Movie;
+import com.yiguan.douban.entity.Region;
 import com.yiguan.douban.mapper.MovieMapper;
 import com.yiguan.douban.mapper.MovieRegionMapper;
 import com.yiguan.douban.service.MovieService;
@@ -33,7 +34,9 @@ public class MovieServiceImpl implements MovieService {
     @Override
     public Movie findMovieById(Integer id) {
         Movie movie = movieMapper.selectByPrimaryKey(id);
-        movie.setCountriesRegions(movieRegionMapper.selectCountriesRegionsByMovieId(id));
+        if (movie != null) {
+            movie.setCountriesRegions(movieRegionMapper.selectCountriesRegionsByMovieId(id));
+        }
         return movie;
     }
 }
