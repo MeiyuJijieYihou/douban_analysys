@@ -22,10 +22,6 @@ public class Comment {
    */
   private Long subtype;
 
-  /**
-   * 评论者姓名
-   */
-  private String pname;
 
   /**
    * 是否看过（电影短评细分，其他无)
