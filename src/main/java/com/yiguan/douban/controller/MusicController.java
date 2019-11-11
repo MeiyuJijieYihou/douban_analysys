@@ -56,8 +56,8 @@ public class MusicController {
     }
 
     @GetMapping("/get/topNToExcel")
-    @ApiOperation("导出评论前5的musics到Excel中")
-    public String top5ToExcel(HttpServletResponse response) {
+    @ApiOperation("导出评论前N的musics到Excel中")
+    public String topNToExcel(HttpServletResponse response) {
 
         boolean b = musicService.topNCommentMusicToExcel(response, 8);
         if (b) {

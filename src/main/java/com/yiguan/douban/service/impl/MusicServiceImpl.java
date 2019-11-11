@@ -5,15 +5,13 @@ import com.yiguan.douban.mapper.MusicMapper;
 import com.yiguan.douban.pojo.CommentMusicPojo;
 import com.yiguan.douban.service.MusicService;
 import org.apache.poi.hssf.usermodel.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Field;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author: chenfl
@@ -47,34 +45,43 @@ public class MusicServiceImpl implements MusicService {
 
         // 创建工作区
         HSSFWorkbook sheets = new HSSFWorkbook();
-        HSSFSheet sheet = sheets.createSheet("testTable");
+        HSSFSheet sheet = sheets.createSheet("musics");
 
         // 得到数据
-        List<CommentMusicPojo> top5CommentMusic = findTopNCommentMusic(number);
+        List<CommentMusicPojo> topNCommentMusic = findTopNCommentMusic(number);
 
         // 设置表名
-        String fileName = "topNMusics" + ".xls";
+        String fileName = "top" + number + "Musics.xls";
 
         // 创建表头
+        // java反射
         Class<CommentMusicPojo> commentMusicPojoClass = CommentMusicPojo.class;
-        HSSFRow row = sheet.createRow(0);
+        // 得到表头行
+        HSSFRow header = sheet.createRow(0);
+        // 得到所有的成员变量
         Field[] declaredFields = commentMusicPojoClass.getDeclaredFields();
         for (int i = 0; i < declaredFields.length; i++) {
-            HSSFCell cell = row.createCell(i);
+            // 创建表头单元格
+            HSSFCell cell = header.createCell(i);
+            // 得到成员变量名称作为插入值
             HSSFRichTextString hssfRichTextString = new HSSFRichTextString(declaredFields[i].getName());
             cell.setCellValue(hssfRichTextString);
         }
 
         // 插入数据
-        for (CommentMusicPojo music: top5CommentMusic) {
-            HSSFRow row1 = sheet.createRow(rowNum);
-
+        for (CommentMusicPojo music: topNCommentMusic) {
+            // 得到内容行
+            HSSFRow info = sheet.createRow(rowNum);
+            // java反射
             Class<? extends CommentMusicPojo> aClass = music.getClass();
+            // 获得所以成员变量
             Field[] musicDeclaredFields = aClass.getDeclaredFields();
             for (int i = 0; i < musicDeclaredFields.length; i++) {
+                // 设置该成员变量可访问
                 musicDeclaredFields[i].setAccessible(true);
                 try {
-                    row1.createCell(i).setCellValue(musicDeclaredFields[i].get(music).toString());
+                    // 得到成员变量的值，并将其插入表中
+                    info.createCell(i).setCellValue(musicDeclaredFields[i].get(music).toString());
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                     return false;
