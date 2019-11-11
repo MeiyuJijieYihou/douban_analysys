@@ -2,7 +2,7 @@ package com.yiguan.douban.service.impl;
 
 import com.yiguan.douban.entity.Music;
 import com.yiguan.douban.mapper.MusicMapper;
-import com.yiguan.douban.pojo.Top5CommentMusicPojo;
+import com.yiguan.douban.pojo.CommentMusicPojo;
 import com.yiguan.douban.service.MusicService;
 import org.apache.poi.hssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.*;
 
 /**
@@ -24,9 +25,6 @@ public class MusicServiceImpl implements MusicService {
     @Resource
     private MusicMapper musicMapper;
 
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
-
     @Override
     public List<Music> findAllMusic(){
         List<Music> list = new ArrayList<>();
@@ -35,14 +33,14 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
-    public List<Top5CommentMusicPojo> findTop5CommentMusic() {
-        List<Top5CommentMusicPojo> top5CommentMusicPojo = musicMapper.top5CommentMusic();
+    public List<CommentMusicPojo> findTopNCommentMusic(Integer number) {
+        List<CommentMusicPojo> commentMusicPojo = musicMapper.topNCommentMusic(number);
 
-        return top5CommentMusicPojo;
+        return commentMusicPojo;
     }
 
     @Override
-    public boolean top5CommentMusicToExcel(HttpServletResponse response) {
+    public boolean topNCommentMusicToExcel(HttpServletResponse response, Integer number) {
 
         // 记录行号
         int rowNum = 1;
@@ -52,32 +50,40 @@ public class MusicServiceImpl implements MusicService {
         HSSFSheet sheet = sheets.createSheet("testTable");
 
         // 得到数据
-        List<Top5CommentMusicPojo> top5CommentMusic = findTop5CommentMusic();
+        List<CommentMusicPojo> top5CommentMusic = findTopNCommentMusic(number);
 
         // 设置表名
-        String fileName = "to5Musics" + ".xls";
+        String fileName = "topNMusics" + ".xls";
 
         // 创建表头
-        String[] headers = new String[]{"name", "singer", "style", "issue_date", "comment_number"};
+        Class<CommentMusicPojo> commentMusicPojoClass = CommentMusicPojo.class;
         HSSFRow row = sheet.createRow(0);
-        for (int i = 0; i < headers.length; i++) {
+        Field[] declaredFields = commentMusicPojoClass.getDeclaredFields();
+        for (int i = 0; i < declaredFields.length; i++) {
             HSSFCell cell = row.createCell(i);
-            HSSFRichTextString hssfRichTextString = new HSSFRichTextString(headers[i]);
+            HSSFRichTextString hssfRichTextString = new HSSFRichTextString(declaredFields[i].getName());
             cell.setCellValue(hssfRichTextString);
         }
 
         // 插入数据
-        for (Top5CommentMusicPojo music: top5CommentMusic) {
+        for (CommentMusicPojo music: top5CommentMusic) {
             HSSFRow row1 = sheet.createRow(rowNum);
-            row1.createCell(0).setCellValue(music.getName());
-            row1.createCell(1).setCellValue(music.getSinger());
-            row1.createCell(2).setCellValue(music.getStyle());
-            row1.createCell(3).setCellValue((music.getIssueDate().toString()));
-            row1.createCell(4).setCellValue(music.getCommentNumber());
+
+            Class<? extends CommentMusicPojo> aClass = music.getClass();
+            Field[] musicDeclaredFields = aClass.getDeclaredFields();
+            for (int i = 0; i < musicDeclaredFields.length; i++) {
+                musicDeclaredFields[i].setAccessible(true);
+                try {
+                    row1.createCell(i).setCellValue(musicDeclaredFields[i].get(music).toString());
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                    return false;
+                }
+            }
             rowNum++;
         }
 
-        // 根据表名创建表，并相应
+        // 根据表名创建表，并响应
         response.setHeader("Content-disposition", "attachment;filename=" + fileName);
         response.setContentType("application/octet-stream;charset=UTF-8");
         try {

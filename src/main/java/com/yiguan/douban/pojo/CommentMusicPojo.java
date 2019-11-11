@@ -9,7 +9,7 @@ import java.util.Date;
  */
 
 @Data
-public class Top5CommentMusicPojo {
+public class CommentMusicPojo {
 
     /**
      * 音乐别名

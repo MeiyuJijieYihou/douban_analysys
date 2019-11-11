@@ -2,12 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yiguan.douban.mapper.MusicMapper">
 
-    <select id="top5CommentMusic" resultType="com.yiguan.douban.pojo.Top5CommentMusicPojo">
+    <select id="topNCommentMusic" resultType="com.yiguan.douban.pojo.CommentMusicPojo">
         select m.name, m.singer, m.style, issue_date,count(c.id) as comment_number
         from music m, comment c
         where c.type = 3 and m.id = c.target_id
         group by m.name,  m.singer, m.style, issue_date
         order by comment_number desc
-        limit 5;
+        limit #{number};
     </select>
 </mapper>

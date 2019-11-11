@@ -1,7 +1,7 @@
 package com.yiguan.douban.mapper;
 
 import com.yiguan.douban.entity.Music;
-import com.yiguan.douban.pojo.Top5CommentMusicPojo;
+import com.yiguan.douban.pojo.CommentMusicPojo;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
@@ -13,9 +13,10 @@ import java.util.List;
  */
 public interface MusicMapper extends Mapper<Music> {
 
+
     /**
-     * Get top 5
+     * @param number
      * @return
      */
-    List<Top5CommentMusicPojo> top5CommentMusic();
+    List<CommentMusicPojo> topNCommentMusic(Integer number);
 }

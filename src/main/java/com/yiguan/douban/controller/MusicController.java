@@ -2,7 +2,7 @@ package com.yiguan.douban.controller;
 
 
 import com.yiguan.douban.entity.Music;
-import com.yiguan.douban.pojo.Top5CommentMusicPojo;
+import com.yiguan.douban.pojo.CommentMusicPojo;
 import com.yiguan.douban.service.MusicService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -41,12 +41,12 @@ public class MusicController {
         return list;
     }
 
-    @GetMapping("/get/top5")
-    @ApiOperation("查询评论排名前五的musics")
-    public List<Top5CommentMusicPojo> top5() {
+    @GetMapping("/get/topN")
+    @ApiOperation("查询评论排名前N的musics")
+    public List<CommentMusicPojo> topN() {
 
-        List<Top5CommentMusicPojo> top5CommentMusic = musicService.findTop5CommentMusic();
-        return top5CommentMusic;
+        List<CommentMusicPojo> topNCommentMusic = musicService.findTopNCommentMusic(8);
+        return topNCommentMusic;
     }
 
     @GetMapping("/get/{id}")
@@ -55,11 +55,11 @@ public class MusicController {
         return  musicService.findMusicById(id);
     }
 
-    @GetMapping("/get/top5ToExcel")
+    @GetMapping("/get/topNToExcel")
     @ApiOperation("导出评论前5的musics到Excel中")
     public String top5ToExcel(HttpServletResponse response) {
 
-        boolean b = musicService.top5CommentMusicToExcel(response);
+        boolean b = musicService.topNCommentMusicToExcel(response, 8);
         if (b) {
             return "Success";
         }
