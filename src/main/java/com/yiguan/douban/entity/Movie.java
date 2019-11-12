@@ -41,12 +41,6 @@ public class Movie {
   private String type;
 
   /**
-   * 制片国家/地区
-   */
-  @Transient
-  private List<String> countriesRegions;
-
-  /**
    * 语言
    */
   private String language;
