@@ -36,5 +36,9 @@ public interface MusicService {
      */
     boolean topNCommentMusicToExcel(HttpServletResponse response, Integer number);
 
+    /**
+     * 根据音乐id 获取音乐的详细信息
+     * @return
+     */
     Music findMusicById(Integer id);
 }
