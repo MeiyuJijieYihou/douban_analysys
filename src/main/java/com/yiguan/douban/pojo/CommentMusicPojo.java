@@ -34,5 +34,5 @@ public class CommentMusicPojo {
     /**
      * 评论数目
      */
-    private Integer commentNumber;
+    private Integer reviewNum;
 }
