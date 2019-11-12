@@ -14,6 +14,14 @@ import java.util.List;
  */
 public interface CommentService {
 
+    /*
+     * @description 查询所有评论
+     *
+     * @params []
+     * @return java.util.List<com.yiguan.douban.entity.Comment>
+     * @author LiBingxiang
+     * @date 2019/11/12 下午7:42
+     */
     List<Comment> findAllComment();
 
 }

@@ -23,15 +23,16 @@ public interface MusicService {
 
     /**
      * 评论榜前N的音乐
-     * 本地模拟数据库测试成功，由于该项目连接数据库还没有足够数据，暂时查出数据为空
      * @param number
      * @return
      */
     List<CommentMusicPojo> findTopNCommentMusic(Integer number);
 
+
     /**
-     * 导出评论榜前5 的数据到Excel表中
-     * 本地模拟数据库测试成功，由于该项目连接数据库还没有足够数据，暂时查出数据为空
+     * 导出评论榜前N的数据到Excel表中
+     * @param response
+     * @param number
      * @return
      */
     boolean topNCommentMusicToExcel(HttpServletResponse response, Integer number);

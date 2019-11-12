@@ -45,7 +45,7 @@ public class MusicController {
     @ApiOperation("查询评论排名前N的musics")
     public List<CommentMusicPojo> topN() {
 
-        List<CommentMusicPojo> topNCommentMusic = musicService.findTopNCommentMusic(8);
+        List<CommentMusicPojo> topNCommentMusic = musicService.findTopNCommentMusic(50);
         return topNCommentMusic;
     }
 
@@ -59,7 +59,7 @@ public class MusicController {
     @ApiOperation("导出评论前N的musics到Excel中")
     public String topNToExcel(HttpServletResponse response) {
 
-        boolean b = musicService.topNCommentMusicToExcel(response, 8);
+        boolean b = musicService.topNCommentMusicToExcel(response, 50);
         if (b) {
             return "Success";
         }

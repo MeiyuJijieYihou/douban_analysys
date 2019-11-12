@@ -20,7 +20,7 @@ class DoubanAnalysysApplicationTests {
 	void contextLoads() {
 
 		CommentMusicPojo commentMusicPojo = new CommentMusicPojo();
-		commentMusicPojo.setCommentNumber(123);
+		commentMusicPojo.setReviewNum(123);
 		commentMusicPojo.setName("test1");
 		commentMusicPojo.setIssueDate(new Date());
 		commentMusicPojo.setSinger("zzs");

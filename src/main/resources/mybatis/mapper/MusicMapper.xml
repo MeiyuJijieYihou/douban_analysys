@@ -3,11 +3,10 @@
 <mapper namespace="com.yiguan.douban.mapper.MusicMapper">
 
     <select id="topNCommentMusic" resultType="com.yiguan.douban.pojo.CommentMusicPojo">
-        select m.name, m.singer, m.style, issue_date,count(c.id) as comment_number
-        from music m, comment c
-        where c.type = 3 and m.id = c.target_id
-        group by m.name,  m.singer, m.style, issue_date
-        order by comment_number desc
+        select name, singer, style, issue_date, review_num
+        from music
+        group by name, singer, style, issue_date, review_num
+        order by review_num desc
         limit #{number};
     </select>
 </mapper>

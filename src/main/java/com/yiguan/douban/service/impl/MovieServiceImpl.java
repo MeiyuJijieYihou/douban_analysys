@@ -4,6 +4,7 @@ import com.yiguan.douban.entity.Movie;
 import com.yiguan.douban.entity.Region;
 import com.yiguan.douban.mapper.MovieMapper;
 import com.yiguan.douban.mapper.MovieRegionMapper;
+import com.yiguan.douban.pojo.MoviePojo;
 import com.yiguan.douban.service.MovieService;
 import org.springframework.stereotype.Service;
 
@@ -27,16 +28,17 @@ public class MovieServiceImpl implements MovieService {
     private MovieRegionMapper movieRegionMapper;
 
     @Override
-    public List<Movie> findAllMovie() {
+    public List<MoviePojo> findAllMovies() {
         return movieMapper.selectAllMovies();
     }
 
     @Override
-    public Movie findMovieById(Integer id) {
-        Movie movie = movieMapper.selectByPrimaryKey(id);
-        if (movie != null) {
-            movie.setCountriesRegions(movieRegionMapper.selectCountriesRegionsByMovieId(id));
-        }
-        return movie;
+    public MoviePojo findMovieById(Integer id) {
+        return movieMapper.findMovieById(id);
+    }
+
+    @Override
+    public List<MoviePojo> findMoviesTop50() {
+        return movieMapper.selectMoviesTop50();
     }
 }

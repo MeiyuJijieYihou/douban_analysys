@@ -2,7 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yiguan.douban.mapper.MovieMapper">
 
-    <resultMap id="MovieRegion" type="com.yiguan.douban.entity.Movie">
+    <sql id="movie">
+        id,
+        name,
+        director,
+        screenwriter,
+        starring,
+        type,
+        language,
+        date,
+        length,
+        other_name,
+        Im_db,
+        short_comment_number,
+        comment_number,
+        score,
+        score_number
+    </sql>
+
+    <resultMap id="MovieRegion" type="com.yiguan.douban.pojo.MoviePojo">
         <id column="id" property="id"/>
         <collection property="countriesRegions" select="com.yiguan.douban.mapper.MovieRegionMapper.selectCountriesRegionsByMovieId" column="id">
         </collection>
@@ -10,22 +28,30 @@
     
     <select id="selectAllMovies" resultMap="MovieRegion">
         SELECT
-            id,
-            name,
-            director,
-            screenwriter,
-            starring,
-            type,
-            language,
-            date,
-            length,
-            other_name,
-            Im_db,
-            short_comment_number,
-            comment_number,
-            score,
-            score_number
+            <include refid="movie"/>
         FROM
             movie
+    </select>
+
+    <select id="findMovieById" resultMap="MovieRegion">
+        SELECT
+        <include refid="movie"/>
+        FROM
+        movie
+        WHERE
+            id = #{id}
+    </select>
+
+    <select id="selectMoviesTop50" resultMap="MovieRegion">
+        SELECT
+            <include refid="movie"/>
+        FROM
+            movie m
+        WHERE
+            id IN
+            ( SELECT mr.movie_id FROM movie_region mr, region r WHERE mr.region_id = r.id AND parent_id = 1 )
+        ORDER BY
+            short_comment_number + comment_number DESC
+        LIMIT 0,50
     </select>
 </mapper>
