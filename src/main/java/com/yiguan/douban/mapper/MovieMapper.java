@@ -1,8 +1,7 @@
 package com.yiguan.douban.mapper;
 
-import com.yiguan.douban.entity.Movie;
 import com.yiguan.douban.pojo.MoviePojo;
-import tk.mybatis.mapper.common.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ import java.util.List;
  *
  * @author LiBingxiang
  * @version 1.0
- * @date 2019/11/8 下午9:36
+ * @date 2019/11/8 21:36
  * @since JDK 1.8
  */
 public interface MovieMapper {
@@ -22,7 +21,7 @@ public interface MovieMapper {
      * @params []
      * @return java.util.List<com.yiguan.douban.entity.Movie>
      * @author LiBingxiang
-     * @date 2019/11/10 上午11:40
+     * @date 2019/11/10 11:40
      */
     List<MoviePojo> selectAllMovies();
 
@@ -32,17 +31,17 @@ public interface MovieMapper {
      * @params [id]
      * @return com.yiguan.douban.pojo.MoviePojo
      * @author LiBingxiang
-     * @date 2019/11/12 下午8:28
+     * @date 2019/11/12 20:28
      */
     MoviePojo findMovieById(Integer id);
 
     /*
      * @description 查询出当前一周评论最多的50个亚洲区域视频降序排列
      *
-     * @params []
-     * @return com.yiguan.douban.pojo.MoviePojo
+     * @params [preTime, nowTime]
+     * @return java.util.List<com.yiguan.douban.pojo.MoviePojo>
      * @author LiBingxiang
-     * @date 2019/11/12 下午8:28
+     * @date 2019/11/13 12:20
      */
-    List<MoviePojo> selectMoviesTop50();
+    List<MoviePojo> selectMoviesTop50(@Param("preTime") String preTime, @Param("nowTime") String nowTime);
 }

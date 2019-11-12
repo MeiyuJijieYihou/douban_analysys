@@ -44,14 +44,15 @@
 
     <select id="selectMoviesTop50" resultMap="MovieRegion">
         SELECT
-            <include refid="movie"/>
+            <include refid="movie"></include>
         FROM
-            movie m
+            movie
         WHERE
             id IN
+            ( SELECT target_id FROM comment WHERE date(date) BETWEEN #{preTime} AND #{nowTime} GROUP BY target_id ORDER BY count(*) DESC )
+        AND
+            id IN
             ( SELECT mr.movie_id FROM movie_region mr, region r WHERE mr.region_id = r.id AND parent_id = 1 )
-        ORDER BY
-            short_comment_number + comment_number DESC
         LIMIT 0,50
     </select>
 </mapper>

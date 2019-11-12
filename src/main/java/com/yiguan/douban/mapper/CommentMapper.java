@@ -8,7 +8,7 @@ import tk.mybatis.mapper.common.Mapper;
  *
  * @author LiBingxiang
  * @version 1.0
- * @date 2019/11/8 下午9:57
+ * @date 2019/11/8 21:57
  * @since JDK 1.8
  */
 public interface CommentMapper extends Mapper<Comment> {

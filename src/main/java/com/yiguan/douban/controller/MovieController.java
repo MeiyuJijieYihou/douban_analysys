@@ -1,6 +1,5 @@
 package com.yiguan.douban.controller;
 
-import com.yiguan.douban.entity.Movie;
 import com.yiguan.douban.pojo.MoviePojo;
 import com.yiguan.douban.service.MovieService;
 import io.swagger.annotations.Api;
@@ -18,7 +17,7 @@ import java.util.List;
  *
  * @author LiBingxiang
  * @version 1.0
- * @date 2019/11/8 下午9:30
+ * @date 2019/11/8 21:30
  * @since JDK 1.8
  */
 @RestController

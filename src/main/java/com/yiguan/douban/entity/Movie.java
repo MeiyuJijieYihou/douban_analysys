@@ -3,8 +3,6 @@ package com.yiguan.douban.entity;
 import lombok.Data;
 
 import javax.persistence.Id;
-import javax.persistence.Transient;
-import java.util.List;
 
 @Data
 public class Movie {

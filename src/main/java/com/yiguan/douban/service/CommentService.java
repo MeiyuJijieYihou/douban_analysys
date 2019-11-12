@@ -9,7 +9,7 @@ import java.util.List;
  *
  * @author LiBingxiang
  * @version 1.0
- * @date 2019/11/8 下午9:42
+ * @date 2019/11/8 21:42
  * @since JDK 1.8
  */
 public interface CommentService {
@@ -20,7 +20,7 @@ public interface CommentService {
      * @params []
      * @return java.util.List<com.yiguan.douban.entity.Comment>
      * @author LiBingxiang
-     * @date 2019/11/12 下午7:42
+     * @date 2019/11/12 19:42
      */
     List<Comment> findAllComment();
 

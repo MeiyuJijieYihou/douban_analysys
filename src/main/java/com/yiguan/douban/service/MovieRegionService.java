@@ -5,7 +5,7 @@ package com.yiguan.douban.service;
  *
  * @author LiBingxiang
  * @version 1.0
- * @date 2019/11/8 下午9:44
+ * @date 2019/11/8 21:44
  * @since JDK 1.8
  */
 public interface MovieRegionService {
