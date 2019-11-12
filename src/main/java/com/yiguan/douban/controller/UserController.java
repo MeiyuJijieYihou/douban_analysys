@@ -41,7 +41,7 @@ public class UserController {
 
     @GetMapping("/get/{id}")
     @ApiOperation("通过id获取用户信息")
-    public User getUser(@PathVariable Integer id){
+    public User getUser(@PathVariable String id){
         return userService.getUserById(id);
     }
 }

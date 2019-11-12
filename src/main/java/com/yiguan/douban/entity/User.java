@@ -11,7 +11,7 @@ public class User {
    * 用户id
    */
   @Id
-  private Long id;
+  private String id;
 
   /**
    * 用户名字
