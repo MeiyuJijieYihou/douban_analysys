@@ -1,7 +1,9 @@
 package com.yiguan.douban.controller;
 
 import com.yiguan.douban.entity.Book;
+import com.yiguan.douban.pojo.BookPojo;
 import com.yiguan.douban.service.BookService;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,5 +43,17 @@ public class BookController {
     @GetMapping("/get/{id}")
     public Book findBookById(@PathVariable Integer id){
         return bookService.findBookById(id);
+    }
+
+    @RequestMapping("/getTopSort")
+    @ApiOperation("查询最火的书籍标签")
+    public String getTopSort(){
+        return bookService.topSort();
+    }
+
+    @RequestMapping("/topTenBook")
+    @ApiOperation("询最火标签下评论数最多的10本书")
+    public List<BookPojo> topTenBook(){
+        return bookService.topTenBook(getTopSort());
     }
 }

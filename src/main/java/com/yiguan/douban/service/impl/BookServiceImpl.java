@@ -2,6 +2,8 @@ package com.yiguan.douban.service.impl;
 
 import com.yiguan.douban.entity.Book;
 import com.yiguan.douban.mapper.BookMapper;
+import com.yiguan.douban.pojo.BookPojo;
+import com.yiguan.douban.pojo.BookTagPojo;
 import com.yiguan.douban.service.BookService;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +35,17 @@ public class BookServiceImpl implements BookService {
     public Book findBookById(Integer id) {
         Book book = bookMapper.selectByPrimaryKey(id);
         return book;
+    }
+
+    @Override
+    public String topSort() {
+        BookTagPojo topSort =  bookMapper.topSort();
+        return  topSort.getSort();
+    }
+
+    @Override
+    public List<BookPojo> topTenBook(String topSort) {
+        List<BookPojo> books = bookMapper.topTenBook(topSort);
+        return books;
     }
 }

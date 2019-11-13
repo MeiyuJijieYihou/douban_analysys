@@ -2,4 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yiguan.douban.mapper.BookMapper">
 
+    <select id="topSort" resultType="com.yiguan.douban.pojo.BookTagPojo">
+        SELECT t1.sort
+        FROM book_tag AS t1
+        WHERE t1.number=(SELECT MAX(t2.number)
+                         FROM book_tag as t2)
+    </select>
+
+    <select id="topTenBook" resultType="com.yiguan.douban.pojo.BookPojo">
+        SELECT b.`name`,b.author,b.cover
+        FROM book b
+        WHERE INSTR(b.sort,#{topSort})>0
+        ORDER BY b.number DESC
+        LIMIT 10
+    </select>
+
 </mapper>
