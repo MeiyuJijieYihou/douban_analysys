@@ -45,15 +45,15 @@ public class BookController {
         return bookService.findBookById(id);
     }
 
-    @RequestMapping("/getTopSort")
+    @RequestMapping("/topSort")
     @ApiOperation("查询最火的书籍标签")
-    public String getTopSort(){
+    public String topSort(){
         return bookService.topSort();
     }
 
     @RequestMapping("/topTenBook")
-    @ApiOperation("询最火标签下评论数最多的10本书")
+    @ApiOperation("查询最火标签下评论数最多的10本书")
     public List<BookPojo> topTenBook(){
-        return bookService.topTenBook(getTopSort());
+        return bookService.topTenBook(topSort());
     }
 }
