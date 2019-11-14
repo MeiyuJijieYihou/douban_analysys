@@ -7,6 +7,15 @@ import lombok.Data;
 import javax.persistence.Id;
 import java.util.Date;
 
+/**
+ * @Author: ChenFL
+ * @Params: 
+ * @Class_name: Music
+ * @Date: 2019/11/14
+ * @Return: 
+ * @Descrption: TODO
+ */
+
 @ApiModel("音乐")
 @Data
 public class Music {
