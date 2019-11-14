@@ -9,7 +9,7 @@ mybatis:
 
 spring:
   datasource:
-    username: root
+    username: analysys_club
     password: YiGuanXYZ.@()85258638
     url: jdbc:mysql://118.25.133.235:3306/douban_analysys?characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
     driver-class-name: com.mysql.cj.jdbc.Driver
