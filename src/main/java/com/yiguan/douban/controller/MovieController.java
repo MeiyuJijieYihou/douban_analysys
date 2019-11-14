@@ -22,7 +22,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/movie")
-@Api("电影相关接口文档")
+@Api(description = "电影相关接口文档")
 public class MovieController {
 
     @Autowired

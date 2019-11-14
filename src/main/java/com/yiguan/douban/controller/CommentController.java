@@ -21,7 +21,7 @@ import java.util.List;
  */
 @RequestMapping("/api/comment")
 @RestController
-@Api("评论相关接口文档")
+@Api(description = "评论相关接口文档")
 public class CommentController {
 
     @Autowired
