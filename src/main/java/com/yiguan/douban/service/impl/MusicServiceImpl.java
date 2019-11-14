@@ -10,7 +10,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -42,6 +44,8 @@ public class MusicServiceImpl implements MusicService {
 
         // 记录行号
         int rowNum = 1;
+        // 时间格式化模板
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 
         // 创建工作区
         HSSFWorkbook sheets = new HSSFWorkbook();
@@ -58,11 +62,13 @@ public class MusicServiceImpl implements MusicService {
         Class<CommentMusicPojo> commentMusicPojoClass = CommentMusicPojo.class;
         // 得到表头行
         HSSFRow header = sheet.createRow(0);
+        // 插入排名字段头
+        header.createCell(0).setCellValue("Ranking");
         // 得到所有的成员变量
         Field[] declaredFields = commentMusicPojoClass.getDeclaredFields();
         for (int i = 0; i < declaredFields.length; i++) {
             // 创建表头单元格
-            HSSFCell cell = header.createCell(i);
+            HSSFCell cell = header.createCell(i + 1);
             // 得到成员变量名称作为插入值
             HSSFRichTextString hssfRichTextString = new HSSFRichTextString(declaredFields[i].getName());
             cell.setCellValue(hssfRichTextString);
@@ -72,6 +78,8 @@ public class MusicServiceImpl implements MusicService {
         for (CommentMusicPojo music: topNCommentMusic) {
             // 得到内容行
             HSSFRow info = sheet.createRow(rowNum);
+            // 插入排名字段内容
+            info.createCell(0).setCellValue(rowNum);
             // java反射
             Class<? extends CommentMusicPojo> aClass = music.getClass();
             // 获得所以成员变量
@@ -81,7 +89,11 @@ public class MusicServiceImpl implements MusicService {
                 musicDeclaredFields[i].setAccessible(true);
                 try {
                     // 得到成员变量的值，并将其插入表中
-                    info.createCell(i).setCellValue(musicDeclaredFields[i].get(music).toString());
+                    if (musicDeclaredFields[i].get(music) instanceof Date) {
+                        info.createCell(i + 1).setCellValue(simpleDateFormat.format(musicDeclaredFields[i].get(music)));
+                    } else {
+                        info.createCell(i + 1).setCellValue(musicDeclaredFields[i].get(music).toString());
+                    }
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                     return false;
@@ -106,7 +118,6 @@ public class MusicServiceImpl implements MusicService {
 
         return true;
     }
-
 
     @Override
     public Music findMusicById(Integer id){

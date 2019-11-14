@@ -1,17 +1,13 @@
 package com.yiguan.douban;
 
 
-import com.yiguan.douban.mapper.MusicMapper;
 import com.yiguan.douban.pojo.CommentMusicPojo;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.annotation.Resource;
 import java.lang.reflect.Field;
-import java.lang.reflect.TypeVariable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 @SpringBootTest
 class DoubanAnalysysApplicationTests {
@@ -20,7 +16,7 @@ class DoubanAnalysysApplicationTests {
 	void contextLoads() {
 
 		CommentMusicPojo commentMusicPojo = new CommentMusicPojo();
-		commentMusicPojo.setCommentNumber(123);
+		commentMusicPojo.setReviewNum(123);
 		commentMusicPojo.setName("test1");
 		commentMusicPojo.setIssueDate(new Date());
 		commentMusicPojo.setSinger("zzs");
@@ -43,6 +39,13 @@ class DoubanAnalysysApplicationTests {
 		for (Field declaredField: declaredFields) {
 			System.out.println(declaredField.getName());
 		}
+	}
+
+	@Test
+	void datetimeTest() {
+		Date nowTime = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		System.out.println(sdf.format(nowTime));
 	}
 
 }
