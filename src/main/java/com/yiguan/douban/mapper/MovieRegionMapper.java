@@ -13,9 +13,9 @@ import java.util.List;
  * @date 2019/11/8 21:35
  * @since JDK 1.8
  */
-public interface MovieRegionMapper  extends Mapper<MovieRegion> {
+public interface MovieRegionMapper extends Mapper<MovieRegion> {
 
-    /*
+    /**
      * @description 通过电影id查询电影地区信息
      *
      * @params [id]

@@ -14,8 +14,8 @@ import java.util.List;
  */
 public interface MovieService {
 
-    /*
-     * @description 查询所有电影信息
+    /**
+     * description: 查询所有电影信息
      *
      * @params []
      * @return java.util.List<com.yiguan.douban.entity.Movie>
@@ -24,8 +24,8 @@ public interface MovieService {
      */
     List<MoviePojo> findAllMovies();
 
-    /*
-     * @description 根据电影id查询电影信息
+    /**
+     * description: 根据电影id查询电影信息
      *
      * @params [id]
      * @return com.yiguan.douban.entity.Movie
@@ -34,8 +34,8 @@ public interface MovieService {
      */
     MoviePojo findMovieById(Integer id);
 
-    /*
-     * @description 查询出当前一周评论最多的50个亚洲区域视频降序排列
+    /**
+     * description: 查询出当前一周评论最多的50个亚洲区域视频降序排列
      *
      * @params []
      * @return com.yiguan.douban.pojo.MoviePojo
