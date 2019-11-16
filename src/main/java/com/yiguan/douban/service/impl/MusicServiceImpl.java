@@ -32,6 +32,10 @@ public class MusicServiceImpl implements MusicService {
         return list;
     }
 
+    public List<Music> findTopNMusic(Integer number) {
+        return musicMapper.topNMusic(number);
+    }
+
     @Override
     public List<CommentMusicPojo> findTopNCommentMusic(Integer number) {
         List<CommentMusicPojo> commentMusicPojo = musicMapper.topNCommentMusic(number);

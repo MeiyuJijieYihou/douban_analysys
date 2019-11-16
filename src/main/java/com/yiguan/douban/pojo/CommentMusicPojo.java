@@ -15,6 +15,11 @@ import java.util.Date;
 public class CommentMusicPojo {
 
     /**
+     * 音乐Id
+     */
+    @ApiModelProperty("音乐Id")
+    private Long id;
+    /**
      * 音乐别名
      */
     @ApiModelProperty("音乐别名")
@@ -43,4 +48,10 @@ public class CommentMusicPojo {
      */
     @ApiModelProperty("评论数目")
     private Integer reviewNum;
+
+    /**
+     * 音乐封面路径
+     */
+    @ApiModelProperty("音乐封面路径")
+    private String coverUrl;
 }

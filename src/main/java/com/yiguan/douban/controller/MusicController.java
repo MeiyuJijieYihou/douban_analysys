@@ -41,11 +41,13 @@ public class MusicController {
         return list;
     }
 
-    @GetMapping("/get/topN")
+    @GetMapping("/get/top{number}")
     @ApiOperation("查询评论排名前N的musics")
-    public List<CommentMusicPojo> topN() {
-
-        List<CommentMusicPojo> topNCommentMusic = musicService.findTopNCommentMusic(50);
+    public List<CommentMusicPojo> topN(@PathVariable Integer number) {
+        if (number == null) {
+            number = 50;
+        }
+        List<CommentMusicPojo> topNCommentMusic = musicService.findTopNCommentMusic(number);
         return topNCommentMusic;
     }
 

@@ -15,8 +15,16 @@ public interface MusicMapper extends Mapper<Music> {
 
 
     /**
+     * 评论前N的音乐
      * @param number
      * @return
      */
     List<CommentMusicPojo> topNCommentMusic(Integer number);
+
+    /**
+     * 流行音乐
+     * @param number
+     * @return
+     */
+    List<Music> topNMusic(Integer number);
 }
