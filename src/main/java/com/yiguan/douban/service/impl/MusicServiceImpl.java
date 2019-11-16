@@ -40,7 +40,6 @@ public class MusicServiceImpl implements MusicService {
     @Override
     public List<SimpleMusicInfoPojo> findTopNCommentMusic(Integer number) {
         List<SimpleMusicInfoPojo> simpleMusicPojo = musicMapper.topNCommentMusic(number);
-        System.out.println(simpleMusicPojo);
 
         return simpleMusicPojo;
     }

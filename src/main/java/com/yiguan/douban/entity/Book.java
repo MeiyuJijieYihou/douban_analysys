@@ -6,6 +6,9 @@ import lombok.Data;
 
 import javax.persistence.Id;
 
+/**
+ * @author
+ */
 @Data
 @ApiModel("书籍")
 public class Book {
