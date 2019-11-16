@@ -2,8 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yiguan.douban.mapper.MusicMapper">
 
-    <select id="topNCommentMusic" resultType="com.yiguan.douban.pojo.CommentMusicPojo">
+    <select id="topNCommentMusic" resultType="com.yiguan.douban.pojo.SimpleMusicInfoPojo">
         select id, name, singer, style, issue_date, review_num, cover_url
+        from music
+        group by id, name, singer, style, issue_date, review_num, cover_url
+        order by review_num desc
+        limit 0, #{number};
+    </select>
+    <select id="topNCommentMusicExcel" resultType="com.yiguan.douban.pojo.SimpleMusicPojo">
+        select name, singer, style, issue_date, review_num
         from music
         group by id, name, singer, style, issue_date, review_num, cover_url
         order by review_num desc

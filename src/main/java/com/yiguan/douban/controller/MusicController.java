@@ -2,7 +2,8 @@ package com.yiguan.douban.controller;
 
 
 import com.yiguan.douban.entity.Music;
-import com.yiguan.douban.pojo.CommentMusicPojo;
+import com.yiguan.douban.pojo.SimpleMusicInfoPojo;
+import com.yiguan.douban.pojo.SimpleMusicPojo;
 import com.yiguan.douban.service.MusicService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -43,11 +44,11 @@ public class MusicController {
 
     @GetMapping("/get/top{number}")
     @ApiOperation("查询评论排名前N的musics")
-    public List<CommentMusicPojo> topN(@PathVariable Integer number) {
+    public List<SimpleMusicInfoPojo> topN(@PathVariable Integer number) {
         if (number == null) {
             number = 50;
         }
-        List<CommentMusicPojo> topNCommentMusic = musicService.findTopNCommentMusic(number);
+        List<SimpleMusicInfoPojo> topNCommentMusic = musicService.findTopNCommentMusic(number);
         return topNCommentMusic;
     }
 

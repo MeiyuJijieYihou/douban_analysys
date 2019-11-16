@@ -7,18 +7,14 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * @author 18460
+ * 用于包装评论榜前N的音乐
+ * @author duan
  */
 
 @Data
-@ApiModel("音乐评论")
-public class CommentMusicPojo {
+@ApiModel("评论音乐")
+public class SimpleMusicPojo {
 
-    /**
-     * 音乐Id
-     */
-    @ApiModelProperty("音乐Id")
-    private Long id;
     /**
      * 音乐别名
      */
@@ -49,9 +45,4 @@ public class CommentMusicPojo {
     @ApiModelProperty("评论数目")
     private Integer reviewNum;
 
-    /**
-     * 音乐封面路径
-     */
-    @ApiModelProperty("音乐封面路径")
-    private String coverUrl;
 }

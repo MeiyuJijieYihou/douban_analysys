@@ -1,7 +1,7 @@
 package com.yiguan.douban;
 
 
-import com.yiguan.douban.pojo.CommentMusicPojo;
+import com.yiguan.douban.pojo.SimpleMusicPojo;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -15,26 +15,26 @@ class DoubanAnalysysApplicationTests {
 	@Test
 	void contextLoads() {
 
-		CommentMusicPojo commentMusicPojo = new CommentMusicPojo();
-		commentMusicPojo.setReviewNum(123);
-		commentMusicPojo.setName("test1");
-		commentMusicPojo.setIssueDate(new Date());
-		commentMusicPojo.setSinger("zzs");
-		commentMusicPojo.setStyle("hah");
-		Class<? extends CommentMusicPojo> aClass = commentMusicPojo.getClass();
+		SimpleMusicPojo simpleMusicPojo = new SimpleMusicPojo();
+		simpleMusicPojo.setReviewNum(123);
+		simpleMusicPojo.setName("test1");
+		simpleMusicPojo.setIssueDate(new Date());
+		simpleMusicPojo.setSinger("zzs");
+		simpleMusicPojo.setStyle("hah");
+		Class<? extends SimpleMusicPojo> aClass = simpleMusicPojo.getClass();
 		Field[] declaredFields1 = aClass.getDeclaredFields();
 		for (Field declaredField: declaredFields1) {
 			declaredField.setAccessible(true);
 			try {
 				//declaredField.
-				System.out.println(declaredField.get(commentMusicPojo).toString());
+				System.out.println(declaredField.get(simpleMusicPojo).toString());
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
 			}
 		}
 
 		System.out.println();
-		Class lazz = CommentMusicPojo.class;
+		Class lazz = SimpleMusicPojo.class;
 		Field[] declaredFields = lazz.getDeclaredFields();
 		for (Field declaredField: declaredFields) {
 			System.out.println(declaredField.getName());

@@ -2,7 +2,8 @@ package com.yiguan.douban.service.impl;
 
 import com.yiguan.douban.entity.Music;
 import com.yiguan.douban.mapper.MusicMapper;
-import com.yiguan.douban.pojo.CommentMusicPojo;
+import com.yiguan.douban.pojo.SimpleMusicInfoPojo;
+import com.yiguan.douban.pojo.SimpleMusicPojo;
 import com.yiguan.douban.service.MusicService;
 import org.apache.poi.hssf.usermodel.*;
 import org.springframework.stereotype.Service;
@@ -37,10 +38,11 @@ public class MusicServiceImpl implements MusicService {
     }
 
     @Override
-    public List<CommentMusicPojo> findTopNCommentMusic(Integer number) {
-        List<CommentMusicPojo> commentMusicPojo = musicMapper.topNCommentMusic(number);
+    public List<SimpleMusicInfoPojo> findTopNCommentMusic(Integer number) {
+        List<SimpleMusicInfoPojo> simpleMusicPojo = musicMapper.topNCommentMusic(number);
+        System.out.println(simpleMusicPojo);
 
-        return commentMusicPojo;
+        return simpleMusicPojo;
     }
 
     @Override
@@ -56,14 +58,14 @@ public class MusicServiceImpl implements MusicService {
         HSSFSheet sheet = sheets.createSheet("musics");
 
         // 得到数据
-        List<CommentMusicPojo> topNCommentMusic = findTopNCommentMusic(number);
+        List<SimpleMusicPojo> topNCommentMusic = musicMapper.topNCommentMusicExcel(number);
 
         // 设置表名
         String fileName = "top" + number + "Musics.xls";
 
         // 创建表头
         // java反射
-        Class<CommentMusicPojo> commentMusicPojoClass = CommentMusicPojo.class;
+        Class<SimpleMusicPojo> commentMusicPojoClass = SimpleMusicPojo.class;
         // 得到表头行
         HSSFRow header = sheet.createRow(0);
         // 插入排名字段头
@@ -79,13 +81,13 @@ public class MusicServiceImpl implements MusicService {
         }
 
         // 插入数据
-        for (CommentMusicPojo music: topNCommentMusic) {
+        for (SimpleMusicPojo music: topNCommentMusic) {
             // 得到内容行
             HSSFRow info = sheet.createRow(rowNum);
             // 插入排名字段内容
             info.createCell(0).setCellValue(rowNum);
             // java反射
-            Class<? extends CommentMusicPojo> aClass = music.getClass();
+            Class<? extends SimpleMusicPojo> aClass = music.getClass();
             // 获得所以成员变量
             Field[] musicDeclaredFields = aClass.getDeclaredFields();
             for (int i = 0; i < musicDeclaredFields.length; i++) {

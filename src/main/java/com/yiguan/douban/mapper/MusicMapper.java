@@ -1,7 +1,8 @@
 package com.yiguan.douban.mapper;
 
 import com.yiguan.douban.entity.Music;
-import com.yiguan.douban.pojo.CommentMusicPojo;
+import com.yiguan.douban.pojo.SimpleMusicInfoPojo;
+import com.yiguan.douban.pojo.SimpleMusicPojo;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;
@@ -15,11 +16,18 @@ public interface MusicMapper extends Mapper<Music> {
 
 
     /**
-     * 评论前N的音乐
+     * 评论榜前N的音乐
      * @param number
      * @return
      */
-    List<CommentMusicPojo> topNCommentMusic(Integer number);
+    List<SimpleMusicInfoPojo> topNCommentMusic(Integer number);
+
+    /**
+     * 评论榜前N的音乐导出到Excel表中
+     * @param number
+     * @return
+     */
+    List<SimpleMusicPojo> topNCommentMusicExcel(Integer number);
 
     /**
      * 流行音乐
