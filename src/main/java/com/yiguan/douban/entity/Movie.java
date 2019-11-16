@@ -102,4 +102,10 @@ public class Movie {
   @ApiModelProperty("评分人数")
   private Integer scoreNumber;
 
+  /**
+   * 电影封面url
+   */
+  @ApiModelProperty("电影封面url")
+  private String coverUrl;
+
 }
