@@ -16,7 +16,7 @@ import java.util.List;
  * @ProjectName: douban
  * @ClassName: BookServiceImpl
  * @Description: TODO(一句话描述该类的功能)
- * @Author: Function
+ * @Author: 付晓
  * @Date: 2019/11/5 19:29
  */
 @Service
@@ -24,6 +24,9 @@ public class BookServiceImpl implements BookService {
     @Resource
     private BookMapper bookMapper;
 
+    /**
+     * 查询所有书籍
+     */
     @Override
     public List<Book> findAllBook() {
         List<Book> list = new ArrayList<>();
@@ -31,18 +34,27 @@ public class BookServiceImpl implements BookService {
         return list;
     }
 
+    /**
+     * 根据书籍id查询书籍
+     */
     @Override
     public Book findBookById(Integer id) {
         Book book = bookMapper.selectByPrimaryKey(id);
         return book;
     }
 
+    /**
+     * 查询最火的书籍标签
+     */
     @Override
     public String topSort() {
         BookTagPojo topSort =  bookMapper.topSort();
         return  topSort.getSort();
     }
 
+    /**
+     * 查询最火标签下 评论数最多的10本书，降序排列
+     */
     @Override
     public List<BookPojo> topTenBook(String topSort) {
         List<BookPojo> books = bookMapper.topTenBook(topSort);

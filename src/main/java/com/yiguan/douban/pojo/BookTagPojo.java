@@ -5,7 +5,7 @@ package com.yiguan.douban.pojo;
  * @ProjectName: douban
  * @ClassName: BookController
  * @Description: TODO(该类用于返回最火的标签)
- * @Author: Function
+ * @Author: 付晓
  */
 public class BookTagPojo {
 

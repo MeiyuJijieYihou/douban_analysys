@@ -12,7 +12,7 @@ import java.util.List;
  * @ProjectName: douban
  * @ClassName: BookMapper
  * @Description: TODO(一句话描述该类的功能)
- * @Author: Function
+ * @Author: 付晓
  * @Date: 2019/11/5 19:10
  */
 public interface BookMapper extends Mapper<Book> {
@@ -26,7 +26,5 @@ public interface BookMapper extends Mapper<Book> {
      * 查询最火标签下 评论数最多的10本书，降序排列
      */
     List<BookPojo> topTenBook(String topSort);
-
-
 
 }

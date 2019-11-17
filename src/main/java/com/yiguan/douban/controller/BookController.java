@@ -17,8 +17,8 @@ import java.util.List;
  * @version v1.0
  * @ProjectName: douban
  * @ClassName: BookController
- * @Description: TODO(一句话描述该类的功能)
- * @Author: Function
+ * @Description: TODO(书籍相关查询操作)
+ * @Author: 付晓
  * @Date: 2019/11/5 19:10
  */
 @Slf4j
@@ -30,17 +30,20 @@ public class BookController {
     private BookService bookService;
 
     @GetMapping("/h")
+    @ApiOperation("Hello World测试")
     public String hello(){
-        return "BookController Hello world!";
+        return "BookController Hello World!";
     }
 
     @GetMapping("/get")
+    @ApiOperation("查询所有书籍")
     public List<Book> getAllBook(){
         List<Book> list = bookService.findAllBook();
         return list;
     }
 
     @GetMapping("/get/{id}")
+    @ApiOperation("根据id查询书籍")
     public Book findBookById(@PathVariable Integer id){
         return bookService.findBookById(id);
     }

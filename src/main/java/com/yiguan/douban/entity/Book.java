@@ -7,7 +7,9 @@ import lombok.Data;
 import javax.persistence.Id;
 
 /**
- * @author
+ * @Author: 付晓
+ * @Date: 2019/11/14
+ * @Description: 书籍类
  */
 @Data
 @ApiModel("书籍")
@@ -125,7 +127,7 @@ public class Book {
   /**
    * 书的简介
    */
-  @ApiModelProperty("书的评价人数")
+  @ApiModelProperty("书的简介")
   private String introduction;
 
 }
