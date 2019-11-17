@@ -34,6 +34,6 @@ public interface BookService {
     /**
     *@Description: 最火类目书籍降序排行，排行数目由前端传入，默认为10
     */
-    public List<BookPojo> topBook(String topSort, Integer num);
+    public List<BookPojo> topBook(Integer num);
 
 }

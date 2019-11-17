@@ -51,6 +51,6 @@ public class BookController {
         if( null == num){
             num = 10;
         }
-        return bookService.topBook(bookService.topSort(), num);
+        return bookService.topBook(num);
     }
 }
