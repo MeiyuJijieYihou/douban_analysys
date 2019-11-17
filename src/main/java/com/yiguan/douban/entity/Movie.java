@@ -70,7 +70,6 @@ public class Movie {
   /**
    * 片长
    */
-
   @ApiModelProperty("片长")
   private Long length;
 

@@ -61,47 +61,10 @@ public class MoviePojo {
     private List<String> countriesRegions;
 
     /**
-     * 语言
-     */
-    @ApiModelProperty("电影语言")
-    private String language;
-
-    /**
      * 上映日期
      */
     @ApiModelProperty("上映日期")
     private String date;
-
-    /**
-     * 片长
-     */
-
-    @ApiModelProperty("片长")
-    private Long length;
-
-    /**
-     * 又名
-     */
-    @ApiModelProperty("电影别名")
-    private String otherName;
-
-    /**
-     * IMDb
-     */
-    @ApiModelProperty("IMDb")
-    private String imDb;
-
-    /**
-     * 短评数量
-     */
-    @ApiModelProperty("短评数量")
-    private Long shortCommentNumber;
-
-    /**
-     * 影评数量
-     */
-    @ApiModelProperty("影评数量")
-    private Long commentNumber;
 
     /**
      * 豆瓣评分
@@ -110,21 +73,9 @@ public class MoviePojo {
     private Double score;
 
     /**
-     * 评分人数
-     */
-    @ApiModelProperty("评分人数")
-    private Integer scoreNumber;
-
-    /**
      * 电影封面url
      */
     @ApiModelProperty("电影封面url")
     private String coverUrl;
-
-    /**
-     * 电影简介
-     */
-    @ApiModelProperty("电影简介")
-    private String introduction;
 
 }

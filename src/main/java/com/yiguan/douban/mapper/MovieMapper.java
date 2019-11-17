@@ -36,12 +36,12 @@ public interface MovieMapper {
     MoviePojo findMovieById(@Param("id") Integer id);
 
     /**
-     * description: 查询出当前一周评论最多的50个亚洲区域视频降序排列
+     * description: 查询出当前一周评论最多的N个亚洲区域视频降序排列
      *
-     * @params [preTime, nowTime]
+     * @params [preTime, nowTime, num]
      * @return java.util.List<com.yiguan.douban.pojo.MoviePojo>
      * @author LiBingxiang
-     * @date 2019/11/13 12:20
+     * @date 2019/11/17 20:19
      */
-    List<MoviePojo> selectMoviesTop50(@Param("preTime") String preTime, @Param("nowTime") String nowTime);
+    List<MoviePojo> selectTopMovies(@Param("preTime") String preTime, @Param("nowTime") String nowTime, @Param("num") Integer num);
 }
