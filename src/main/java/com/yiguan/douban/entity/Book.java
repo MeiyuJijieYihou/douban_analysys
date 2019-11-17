@@ -54,7 +54,7 @@ public class Book {
    * 书的原作名
    */
   @ApiModelProperty("书的原作名")
-  private String originalname;
+  private String originalName;
 
   /**
    * 书的译者
@@ -72,13 +72,13 @@ public class Book {
    * 书的页数
    */
   @ApiModelProperty("书的页数")
-  private long pages;
+  private Long pages;
 
   /**
    * 书的定价
    */
   @ApiModelProperty("书的定价")
-  private float pricing;
+  private Double pricing;
 
   /**
    * 书的装帧
@@ -121,5 +121,11 @@ public class Book {
    */
   @ApiModelProperty("书的评价人数")
   private Long number;
+
+  /**
+   * 书的简介
+   */
+  @ApiModelProperty("书的评价人数")
+  private String introduction;
 
 }
