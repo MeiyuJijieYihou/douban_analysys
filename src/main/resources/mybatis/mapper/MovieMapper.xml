@@ -18,7 +18,8 @@
         comment_number,
         score,
         score_number,
-	cover_url
+	    cover_url，
+	    introduction
     </sql>
 
     <resultMap id="MovieRegion" type="com.yiguan.douban.pojo.MoviePojo">

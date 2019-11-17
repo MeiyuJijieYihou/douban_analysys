@@ -116,4 +116,10 @@ public class Movie {
   @ApiModelProperty("电影封面url")
   private String coverUrl;
 
+  /**
+   * 电影简介
+   */
+  @ApiModelProperty("电影简介")
+  private String introduction;
+
 }
