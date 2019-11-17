@@ -6,10 +6,7 @@ import com.yiguan.douban.service.BookService;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -48,24 +45,12 @@ public class BookController {
         return bookService.findBookById(id);
     }
 
-    @GetMapping("/topSort")
-    @ApiOperation("查询最火的书籍标签")
-    public String topSort(){
-        return bookService.topSort();
-    }
-
-    @GetMapping("/topTenBook")
-    @ApiOperation("查询最火标签下评论数最多的10本书")
-    public List<BookPojo> topTenBook(){
-        return bookService.topTenBook(topSort());
-    }
-
     @GetMapping({"/topBook/{num}","/topBook"})
     @ApiOperation("最火类目书籍降序排行，排行数目由前端传入，默认为10")
     public List<BookPojo> topBook(@PathVariable(required=false)Integer num){
         if( null == num){
             num = 10;
         }
-        return bookService.topBook(topSort(), num);
+        return bookService.topBook(bookService.topSort(), num);
     }
 }
