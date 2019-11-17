@@ -1,8 +1,10 @@
 package com.yiguan.douban.service;
 
 import com.yiguan.douban.entity.Music;
+import com.yiguan.douban.pojo.MusicNewCommentPojo;
 import com.yiguan.douban.pojo.SimpleMusicInfoPojo;
 import com.yiguan.douban.pojo.SimpleMusicPojo;
+import io.swagger.models.auth.In;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -44,4 +46,11 @@ public interface MusicService {
      * @return
      */
     Music findMusicById(Integer id);
+
+    /**
+     * 根据音乐id得到最新的N条音乐评论，N由前端传入，默认为10
+     * @param id,num
+     * @return
+     */
+    List<MusicNewCommentPojo> topNMusicNewComment(Integer id, Integer num);
 }

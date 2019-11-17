@@ -2,6 +2,7 @@ package com.yiguan.douban.service.impl;
 
 import com.yiguan.douban.entity.Music;
 import com.yiguan.douban.mapper.MusicMapper;
+import com.yiguan.douban.pojo.MusicNewCommentPojo;
 import com.yiguan.douban.pojo.SimpleMusicInfoPojo;
 import com.yiguan.douban.pojo.SimpleMusicPojo;
 import com.yiguan.douban.service.MusicService;
@@ -128,6 +129,11 @@ public class MusicServiceImpl implements MusicService {
     public Music findMusicById(Integer id){
         Music music = musicMapper.selectByPrimaryKey(id);
         return music;
+    }
+
+    @Override
+    public List<MusicNewCommentPojo> topNMusicNewComment(Integer id, Integer num) {
+        return musicMapper.topNMusicNewComment(id,num);
     }
 
 }

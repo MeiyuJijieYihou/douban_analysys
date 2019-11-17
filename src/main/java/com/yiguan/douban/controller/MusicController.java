@@ -2,8 +2,8 @@ package com.yiguan.douban.controller;
 
 
 import com.yiguan.douban.entity.Music;
+import com.yiguan.douban.pojo.MusicNewCommentPojo;
 import com.yiguan.douban.pojo.SimpleMusicInfoPojo;
-import com.yiguan.douban.pojo.SimpleMusicPojo;
 import com.yiguan.douban.service.MusicService;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +67,13 @@ public class MusicController {
             return "Success";
         }
         return "Failure";
+    }
+
+    @GetMapping("/getN/{id}/{num}")
+    @ApiOperation("根据音乐id得到最新的N条音乐评论，N由前端传入，默认为10")
+    public List<MusicNewCommentPojo> topNMusicNewComment(@PathVariable(required = false)Integer id,
+                                                         @PathVariable(required = false)Integer num) {
+        return musicService.topNMusicNewComment(id,num);
     }
 
 }

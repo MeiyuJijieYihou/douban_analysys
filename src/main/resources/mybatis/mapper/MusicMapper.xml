@@ -22,4 +22,13 @@
         from music
         limit 0, #{number};
     </select>
+
+    <select id="topNMusicNewComment" resultType="com.yiguan.douban.pojo.MusicNewCommentPojo">
+        select m.`name`,m.cover_url,m.singer,c.content,c.date
+        FROM music m,`comment` c
+        WHERE m.id=#{id} AND m.id=c.target_id
+        ORDER BY c.date DESC
+        LIMIT 0,#{num}
+    </select>
+
 </mapper>
