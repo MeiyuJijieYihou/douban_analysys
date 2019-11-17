@@ -24,6 +24,13 @@ public class BookPojo {
      */
     private String author;
 
+    /**
+     * 书的简介
+     */
+    private String introduction;
+
+
+
     public String getCover() {
         return cover;
     }
@@ -46,5 +53,13 @@ public class BookPojo {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getIntroduction() {
+        return introduction;
+    }
+
+    public void setIntroduction(String introduction) {
+        this.introduction = introduction;
     }
 }

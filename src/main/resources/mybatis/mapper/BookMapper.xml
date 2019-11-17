@@ -10,7 +10,7 @@
     </select>
 
     <select id="topTenBook" resultType="com.yiguan.douban.pojo.BookPojo">
-        SELECT b.`name`,b.author,b.cover
+        SELECT b.`name`,b.author,b.cover,b.introduction
         FROM book b
         WHERE INSTR(b.sort,#{topSort})>0
         ORDER BY b.number DESC
