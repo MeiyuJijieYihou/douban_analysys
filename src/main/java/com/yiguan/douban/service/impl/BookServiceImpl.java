@@ -48,4 +48,10 @@ public class BookServiceImpl implements BookService {
         List<BookPojo> books = bookMapper.topTenBook(topSort);
         return books;
     }
+
+    @Override
+    public List<BookPojo> topBook(String topSort, Integer num) {
+        List<BookPojo> books = bookMapper.topBook(topSort, num);
+        return books;
+    }
 }

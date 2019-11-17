@@ -56,4 +56,13 @@ public class BookController {
     public List<BookPojo> topTenBook(){
         return bookService.topTenBook(topSort());
     }
+
+    @GetMapping({"/topBook/{num}","/topBook"})
+    @ApiOperation("最火类目书籍降序排行，排行数目由前端传入，默认为10")
+    public List<BookPojo> topBook(@PathVariable(required=false)Integer num){
+        if( null == num){
+            num = 10;
+        }
+        return bookService.topBook(topSort(), num);
+    }
 }

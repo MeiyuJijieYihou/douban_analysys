@@ -17,4 +17,13 @@
         LIMIT 10
     </select>
 
+    <select id="topBook" resultType="com.yiguan.douban.pojo.BookPojo">
+        SELECT a.`name`,a.author,a.cover
+        FROM book a
+        WHERE INSTR(a.sort,#{topSort})>0
+        ORDER BY a.number DESC
+        LIMIT 0,#{num}
+    </select>
+
+
 </mapper>

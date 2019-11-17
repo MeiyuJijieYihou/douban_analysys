@@ -26,6 +26,15 @@ public interface BookMapper extends Mapper<Book> {
      * 查询最火标签下 评论数最多的10本书，降序排列
      */
     List<BookPojo> topTenBook(String topSort);
+    
+    /**
+    *@Author: NaiPan
+    *@Description: 最火类目书籍降序排行，排行数目由前端传入，默认为10
+    *@Param: 
+    *@return: 
+    *@date: 2019/11/17
+    */
+    List<BookPojo> topBook(String topSort, Integer num);
 
 
 
