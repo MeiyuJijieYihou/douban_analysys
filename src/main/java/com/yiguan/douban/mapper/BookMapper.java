@@ -12,7 +12,7 @@ import java.util.List;
  * @ProjectName: douban
  * @ClassName: BookMapper
  * @Description: TODO(一句话描述该类的功能)
- * @Author: Function
+ * @Author: 付晓
  * @Date: 2019/11/5 19:10
  */
 public interface BookMapper extends Mapper<Book> {
@@ -35,7 +35,5 @@ public interface BookMapper extends Mapper<Book> {
     *@date: 2019/11/17
     */
     List<BookPojo> topBook(String topSort, Integer num);
-
-
 
 }
