@@ -1,6 +1,7 @@
 package com.yiguan.douban.controller;
 
 import com.yiguan.douban.entity.Book;
+import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
 import com.yiguan.douban.service.BookService;
 import io.swagger.annotations.ApiOperation;
@@ -52,5 +53,14 @@ public class BookController {
             num = 10;
         }
         return bookService.topBook(num);
+    }
+
+    @GetMapping("/get/{id}/{num}")
+    @ApiOperation("根据id查询书籍最新的N条评论，N默认为10")
+    public List<BookNewCommentPojo> topNBookNewComment(@PathVariable(required = false)Integer id, Integer num){
+        if (null == num) {
+            num = 10;
+        }
+        return bookService.topNBookNewComment(id,num);
     }
 }

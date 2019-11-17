@@ -1,6 +1,7 @@
 package com.yiguan.douban.service;
 
 import com.yiguan.douban.entity.Book;
+import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
 import io.swagger.models.auth.In;
 
@@ -36,4 +37,8 @@ public interface BookService {
     */
     public List<BookPojo> topBook(Integer num);
 
+    /**
+     * 根据id查询书籍的前Num条最新评论,Num、id均为前端传入，Num默认为10
+     */
+    public List<BookNewCommentPojo> topNBookNewComment(Integer id, Integer num);
 }

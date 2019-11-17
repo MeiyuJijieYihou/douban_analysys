@@ -1,6 +1,7 @@
 package com.yiguan.douban.mapper;
 
 import com.yiguan.douban.entity.Book;
+import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
 import com.yiguan.douban.pojo.BookTagPojo;
 import tk.mybatis.mapper.common.Mapper;
@@ -26,5 +27,7 @@ public interface BookMapper extends Mapper<Book> {
     *@Description: 最火类目书籍降序排行，排行数目由前端传入，默认为10
     */
     List<BookPojo> topBook(String topSort, Integer num);
+
+    List<BookNewCommentPojo> topNBookNewComment(Integer id,Integer num);
 
 }

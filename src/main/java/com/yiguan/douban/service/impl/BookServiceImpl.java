@@ -2,6 +2,7 @@ package com.yiguan.douban.service.impl;
 
 import com.yiguan.douban.entity.Book;
 import com.yiguan.douban.mapper.BookMapper;
+import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
 import com.yiguan.douban.pojo.BookTagPojo;
 import com.yiguan.douban.service.BookService;
@@ -59,5 +60,15 @@ public class BookServiceImpl implements BookService {
     public List<BookPojo> topBook(Integer num) {
         List<BookPojo> books = bookMapper.topBook(topSort(), num);
         return books;
+    }
+
+
+    /**
+     * 查询最火标签下 评论数最多的10本书，降序排列
+     */
+    @Override
+    public List<BookNewCommentPojo> topNBookNewComment(Integer id, Integer num){
+        List<BookNewCommentPojo> bookcomments = bookMapper.topNBookNewComment(id,num);
+        return bookcomments;
     }
 }
