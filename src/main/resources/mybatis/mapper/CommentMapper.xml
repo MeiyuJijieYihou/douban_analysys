@@ -2,4 +2,50 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.yiguan.douban.mapper.CommentMapper">
 
+    <sql id="comments">
+        id,
+        type,
+        subtype,
+        seen,
+        star,
+        date,
+        title,
+        content,
+        useful_number,
+        useless_number,
+        target_id,
+        user_id
+    </sql>
+
+    <select id="selectNewShortComments" resultType="com.yiguan.douban.entity.Comment">
+        SELECT
+            <include refid="comments"/>
+        FROM
+            comment
+        WHERE
+            type = 1
+        AND
+            target_id = #{id}
+        AND
+            subtype = 0
+        ORDER BY
+            date DESC
+        LIMIT 0,#{num}
+    </select>
+
+    <select id="selectNewComments" resultType="com.yiguan.douban.entity.Comment">
+        SELECT
+        <include refid="comments"/>
+        FROM
+        comment
+        WHERE
+        type = 1
+        AND
+        target_id = #{id}
+        AND
+        subtype = 1
+        ORDER BY
+        date DESC
+        LIMIT 0,#{num}
+    </select>
 </mapper>
