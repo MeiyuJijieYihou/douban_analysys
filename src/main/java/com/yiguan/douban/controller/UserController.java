@@ -44,4 +44,10 @@ public class UserController {
     public User getUser(@PathVariable String id){
         return userService.getUserById(id);
     }
+
+    @GetMapping("/test")
+    @ApiOperation("jenkins自动化构建测试")
+    public String testJenkins() {
+        return "hello, this is jenkins test";
+    }
 }
