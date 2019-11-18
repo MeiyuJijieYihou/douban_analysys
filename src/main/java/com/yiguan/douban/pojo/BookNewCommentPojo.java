@@ -1,5 +1,6 @@
 package com.yiguan.douban.pojo;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -11,6 +12,7 @@ import java.util.Date;
  * @Date: 2019/11/17 20:39
  */
 @Data
+@ApiModel("书籍最新评价pojo")
 public class BookNewCommentPojo {
 
     /**
