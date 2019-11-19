@@ -1,5 +1,8 @@
 package com.yiguan.douban.pojo;
 
+import io.swagger.annotations.ApiModel;
+import lombok.Data;
+
 /**
  * @version v1.0
  * @ProjectName: douban
@@ -7,18 +10,12 @@ package com.yiguan.douban.pojo;
  * @Description: TODO(该类用于返回最火的标签)
  * @Author: 付晓
  */
+@ApiModel("书籍标签Pojo")
+@Data
 public class BookTagPojo {
 
     /**
      * 书籍标签
      */
     private String sort;
-
-    public String getSort() {
-        return sort;
-    }
-
-    public void setSort(String sort) {
-        this.sort = sort;
-    }
 }
