@@ -6,6 +6,14 @@ import lombok.Data;
 
 import javax.persistence.Id;
 
+/**
+ * Description: 电影类
+ *
+ * @author LiBingxiang
+ * @version 1.0
+ * @date 2019/11/17 14:31
+ * @since JDK 1.8
+ */
 @ApiModel("电影")
 @Data
 public class Movie {
@@ -62,7 +70,6 @@ public class Movie {
   /**
    * 片长
    */
-
   @ApiModelProperty("片长")
   private Long length;
 
@@ -101,5 +108,17 @@ public class Movie {
    */
   @ApiModelProperty("评分人数")
   private Integer scoreNumber;
+
+  /**
+   * 电影封面url
+   */
+  @ApiModelProperty("电影封面url")
+  private String coverUrl;
+
+  /**
+   * 电影简介
+   */
+  @ApiModelProperty("电影简介")
+  private String introduction;
 
 }

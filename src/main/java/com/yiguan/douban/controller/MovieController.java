@@ -1,5 +1,6 @@
 package com.yiguan.douban.controller;
 
+import com.yiguan.douban.entity.Comment;
 import com.yiguan.douban.pojo.MoviePojo;
 import com.yiguan.douban.service.MovieService;
 import io.swagger.annotations.Api;
@@ -46,9 +47,25 @@ public class MovieController {
         return movieService.findMovieById(id);
     }
 
-    @GetMapping("/get/top50")
-    @ApiOperation("查询出当前一周评论最多的50个亚洲区域视频降序排列")
-    public List<MoviePojo> getMoviesTop50() {
-        return movieService.findMoviesTop50();
+    @GetMapping({"/topMovies/{num}", "/topMovies"})
+    @ApiOperation("查询出当前一周评论最多的N个亚洲区域视频降序排列")
+    public List<MoviePojo> getTopMovies(@PathVariable(required = false) Integer num) {
+        if (null == num) {
+            num = 50;
+        } else if (num <= 0) {
+            return null;
+        }
+        return movieService.findTopMovies(num);
+    }
+
+    @GetMapping({"/newComments/{id}/{num}", "/newComments/{id}"})
+    @ApiOperation("根据电影id查找最新的N/2条电影短评论和N/2条电影影评")
+    public List<Comment> getTopMovies(@PathVariable Integer id, @PathVariable(required = false) Integer num) {
+        if (null == num) {
+            num = 10;
+        } else if (num <= 0) {
+            return null;
+        }
+        return movieService.findNewComments(id, num / 2 == 0 ? 1 : num / 2);
     }
 }

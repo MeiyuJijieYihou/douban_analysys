@@ -6,6 +6,14 @@ import lombok.Data;
 
 import java.util.Date;
 
+/**
+ * Description: 评论类
+ *
+ * @author LiBingxiang
+ * @version 1.0
+ * @date 2019/11/17 14:32
+ * @since JDK 1.8
+ */
 @ApiModel("评论")
 @Data
 public class Comment {

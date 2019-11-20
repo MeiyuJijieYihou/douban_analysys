@@ -9,12 +9,19 @@
                          FROM book_tag as t2)
     </select>
 
-    <select id="topTenBook" resultType="com.yiguan.douban.pojo.BookPojo">
-        SELECT b.`name`,b.author,b.cover
-        FROM book b
-        WHERE INSTR(b.sort,#{topSort})>0
-        ORDER BY b.number DESC
-        LIMIT 10
+    <select id="topBook" resultType="com.yiguan.douban.pojo.BookPojo">
+        SELECT a.id, a.`name`,a.author,a.cover,a.introduction
+        FROM book a
+        WHERE INSTR(a.sort,#{topSort})>0
+        ORDER BY a.number DESC
+        LIMIT 0,#{num}
     </select>
 
+    <select id="topNBookNewComment" resultType="com.yiguan.douban.pojo.BookNewCommentPojo">
+        SELECT b.name,b.author,b.cover,c.content,c.date
+        FROM book b,comment c
+        WHERE b.id=c.target_id and b.id=#{id}
+        ORDER BY c.date DESC
+        LIMIT 0,#{num}
+    </select>
 </mapper>

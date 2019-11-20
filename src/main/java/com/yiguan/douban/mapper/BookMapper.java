@@ -1,6 +1,7 @@
 package com.yiguan.douban.mapper;
 
 import com.yiguan.douban.entity.Book;
+import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
 import com.yiguan.douban.pojo.BookTagPojo;
 import tk.mybatis.mapper.common.Mapper;
@@ -12,7 +13,7 @@ import java.util.List;
  * @ProjectName: douban
  * @ClassName: BookMapper
  * @Description: TODO(一句话描述该类的功能)
- * @Author: Function
+ * @Author: 付晓
  * @Date: 2019/11/5 19:10
  */
 public interface BookMapper extends Mapper<Book> {
@@ -21,12 +22,12 @@ public interface BookMapper extends Mapper<Book> {
      * 查询最火的书籍标签
      */
      BookTagPojo topSort();
-
+    
     /**
-     * 查询最火标签下 评论数最多的10本书，降序排列
-     */
-    List<BookPojo> topTenBook(String topSort);
+    *@Description: 最火类目书籍降序排行，排行数目由前端传入，默认为10
+    */
+    List<BookPojo> topBook(String topSort, Integer num);
 
-
+    List<BookNewCommentPojo> topNBookNewComment(Integer id,Integer num);
 
 }

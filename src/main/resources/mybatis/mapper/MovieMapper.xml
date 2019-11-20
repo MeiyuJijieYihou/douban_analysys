@@ -17,7 +17,9 @@
         short_comment_number,
         comment_number,
         score,
-        score_number
+        score_number,
+	    cover_url,
+	    introduction
     </sql>
 
     <resultMap id="MovieRegion" type="com.yiguan.douban.pojo.MoviePojo">
@@ -42,9 +44,17 @@
             id = #{id}
     </select>
 
-    <select id="selectMoviesTop50" resultMap="MovieRegion">
+    <select id="selectTopMovies" resultMap="MovieRegion">
         SELECT
-            <include refid="movie"></include>
+        id,
+        name,
+        director,
+        screenwriter,
+        starring,
+        type,
+        date,
+        score,
+        cover_url
         FROM
             movie
         WHERE
@@ -53,6 +63,6 @@
         AND
             id IN
             ( SELECT mr.movie_id FROM movie_region mr, region r WHERE mr.region_id = r.id AND parent_id = 1 )
-        LIMIT 0,50
+        LIMIT 0,#{num}
     </select>
 </mapper>

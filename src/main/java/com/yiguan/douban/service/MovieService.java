@@ -1,5 +1,6 @@
 package com.yiguan.douban.service;
 
+import com.yiguan.douban.entity.Comment;
 import com.yiguan.douban.pojo.MoviePojo;
 
 import java.util.List;
@@ -35,12 +36,22 @@ public interface MovieService {
     MoviePojo findMovieById(Integer id);
 
     /**
-     * description: 查询出当前一周评论最多的50个亚洲区域视频降序排列
+     * description: 查询出当前一周评论最多的N个亚洲区域视频降序排列
      *
-     * @params []
-     * @return com.yiguan.douban.pojo.MoviePojo
+     * @params [num]
+     * @return java.util.List<com.yiguan.douban.pojo.MoviePojo>
      * @author LiBingxiang
-     * @date 2019/11/12 20:12
+     * @date 2019/11/17 20:15
      */
-    List<MoviePojo> findMoviesTop50();
+    List<MoviePojo> findTopMovies(Integer num);
+
+    /**
+     * description: 根据电影id查找最新的N/2条电影短评论和N/2条电影影评
+     *
+     * @params [id, num]
+     * @return java.util.List<com.yiguan.douban.entity.Comment>
+     * @author LiBingxiang
+     * @date 2019/11/17 20:55
+     */
+    List<Comment> findNewComments(Integer id, Integer num);
 }

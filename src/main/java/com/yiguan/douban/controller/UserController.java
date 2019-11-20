@@ -21,7 +21,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/user")
-@Api("用户相关接口文档")
+@Api(description = "用户相关接口文档")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -43,5 +43,11 @@ public class UserController {
     @ApiOperation("通过id获取用户信息")
     public User getUser(@PathVariable String id){
         return userService.getUserById(id);
+    }
+
+    @GetMapping("/test")
+    @ApiOperation("jenkins自动化构建测试")
+    public String testJenkins() {
+        return "hello, this is jenkins test";
     }
 }

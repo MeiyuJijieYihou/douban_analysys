@@ -2,10 +2,10 @@ package com.yiguan.douban.controller;
 
 
 import com.yiguan.douban.entity.Music;
-import com.yiguan.douban.pojo.CommentMusicPojo;
+import com.yiguan.douban.pojo.MusicNewCommentPojo;
+import com.yiguan.douban.pojo.SimpleMusicInfoPojo;
 import com.yiguan.douban.service.MusicService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,11 +41,14 @@ public class MusicController {
         return list;
     }
 
-    @GetMapping("/get/topN")
+    @GetMapping("/get/top{number}")
     @ApiOperation("查询评论排名前N的musics")
-    public List<CommentMusicPojo> topN() {
-
-        List<CommentMusicPojo> topNCommentMusic = musicService.findTopNCommentMusic(50);
+    @ApiImplicitParam(name = "查询数量", value = "默认为50条")
+    public List<SimpleMusicInfoPojo> topN(@PathVariable Integer number) {
+        if (number == null) {
+            number = 50;
+        }
+        List<SimpleMusicInfoPojo> topNCommentMusic = musicService.findTopNCommentMusic(number);
         return topNCommentMusic;
     }
 
@@ -64,6 +67,13 @@ public class MusicController {
             return "Success";
         }
         return "Failure";
+    }
+
+    @GetMapping("/getN/{id}/{num}")
+    @ApiOperation("根据音乐id得到最新的N条音乐评论，N由前端传入，默认为10")
+    public List<MusicNewCommentPojo> topNMusicNewComment(@PathVariable(required = false)Integer id,
+                                                         @PathVariable(required = false)Integer num) {
+        return musicService.topNMusicNewComment(id,num);
     }
 
 }

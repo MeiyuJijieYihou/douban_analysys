@@ -6,6 +6,11 @@ import lombok.Data;
 
 import javax.persistence.Id;
 
+/**
+ * @Author: 付晓
+ * @Date: 2019/11/14
+ * @Description: 书籍类
+ */
 @Data
 @ApiModel("书籍")
 public class Book {
@@ -51,7 +56,7 @@ public class Book {
    * 书的原作名
    */
   @ApiModelProperty("书的原作名")
-  private String originalname;
+  private String originalName;
 
   /**
    * 书的译者
@@ -69,13 +74,13 @@ public class Book {
    * 书的页数
    */
   @ApiModelProperty("书的页数")
-  private long pages;
+  private Long pages;
 
   /**
    * 书的定价
    */
   @ApiModelProperty("书的定价")
-  private float pricing;
+  private Double pricing;
 
   /**
    * 书的装帧
@@ -118,5 +123,11 @@ public class Book {
    */
   @ApiModelProperty("书的评价人数")
   private Long number;
+
+  /**
+   * 书的简介
+   */
+  @ApiModelProperty("书的简介")
+  private String introduction;
 
 }

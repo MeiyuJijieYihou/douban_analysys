@@ -1,14 +1,21 @@
 package com.yiguan.douban.pojo;
 
+import lombok.Data;
+
 /**
  * @version v1.0
  * @ProjectName: douban
  * @ClassName: BookController
- * @Description: TODO(该类用于返回 最火标签下评论数最多的10本书,还需要再Book表中增加一个简介字段，后面再改)
- * @Author: Function
+ * @Description: TODO(该类用于返回 最火标签下评论数最多的10本书)
+ * @Author: 付晓
  */
+@Data
 public class BookPojo {
 
+    /**
+     * 书籍id
+     */
+    private Long id;
     /**
      * 书的封面
      */
@@ -24,27 +31,10 @@ public class BookPojo {
      */
     private String author;
 
-    public String getCover() {
-        return cover;
-    }
+    /**
+     * 书的简介
+     */
+    private String introduction;
 
-    public void setCover(String cover) {
-        this.cover = cover;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
 }

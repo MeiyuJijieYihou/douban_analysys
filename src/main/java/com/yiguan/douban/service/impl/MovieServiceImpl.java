@@ -1,5 +1,7 @@
 package com.yiguan.douban.service.impl;
 
+import com.yiguan.douban.entity.Comment;
+import com.yiguan.douban.mapper.CommentMapper;
 import com.yiguan.douban.mapper.MovieMapper;
 import com.yiguan.douban.mapper.MovieRegionMapper;
 import com.yiguan.douban.pojo.MoviePojo;
@@ -25,6 +27,8 @@ public class MovieServiceImpl implements MovieService {
 
     @Resource
     private MovieMapper movieMapper;
+    @Resource
+    private CommentMapper commentMapper;
 
     @Override
     public List<MoviePojo> findAllMovies() {
@@ -37,13 +41,21 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<MoviePojo> findMoviesTop50() {
+    public List<MoviePojo> findTopMovies(Integer num) {
         Date nowTime = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(nowTime);
         calendar.add(Calendar.DAY_OF_MONTH, -7);
         Date preTime = calendar.getTime();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        return movieMapper.selectMoviesTop50(sdf.format(preTime), sdf.format(nowTime));
+        return movieMapper.selectTopMovies(sdf.format(preTime), sdf.format(nowTime), num);
+    }
+
+    @Override
+    public List<Comment> findNewComments(Integer id, Integer num) {
+        List<Comment> shortComments = commentMapper.selectNewShortComments(id, num);
+        List<Comment> comments = commentMapper.selectNewComments(id, num);
+        shortComments.addAll(comments);
+        return shortComments;
     }
 }
