@@ -4,6 +4,7 @@ import com.yiguan.douban.entity.Book;
 import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
 import com.yiguan.douban.service.BookService;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api/book")
+@Api(description = "书籍相关接口文档")
 public class BookController {
 
     @Autowired
