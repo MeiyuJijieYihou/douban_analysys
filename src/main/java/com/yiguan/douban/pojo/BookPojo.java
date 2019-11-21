@@ -1,5 +1,7 @@
 package com.yiguan.douban.pojo;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -10,31 +12,35 @@ import lombok.Data;
  * @Author: 付晓
  */
 @Data
+@ApiModel("书籍pojo")
 public class BookPojo {
 
     /**
      * 书籍id
      */
+    @ApiModelProperty("书籍id")
     private Long id;
     /**
      * 书的封面
      */
+    @ApiModelProperty("书的封面")
     private String cover;
 
     /**
      * 书名
      */
+    @ApiModelProperty("书名")
     private String name;
 
     /**
      * 书的作者
      */
+    @ApiModelProperty("书的作者")
     private String author;
 
     /**
      * 书的简介
      */
+    @ApiModelProperty("书的简介")
     private String introduction;
-
-
 }

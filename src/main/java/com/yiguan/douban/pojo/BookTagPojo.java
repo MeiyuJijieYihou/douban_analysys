@@ -1,6 +1,7 @@
 package com.yiguan.douban.pojo;
 
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -17,5 +18,6 @@ public class BookTagPojo {
     /**
      * 书籍标签
      */
+    @ApiModelProperty("书籍标签")
     private String sort;
 }
