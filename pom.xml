@@ -93,6 +93,18 @@
 			<version>3.17</version>
 		</dependency>
 
+		<!-- 命名转化依赖（下划线改为小驼峰） -->
+		<dependency>
+			<groupId>org.scala-lang</groupId>
+			<artifactId>scala-library</artifactId>
+			<version>2.11.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>27.0.1-jre</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

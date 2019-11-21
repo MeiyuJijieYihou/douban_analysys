@@ -31,4 +31,11 @@
         LIMIT 0,#{num}
     </select>
 
+    <select id="musicColumnComment" resultType="java.util.Map">
+        SELECT COLUMN_NAME as columnName, COLUMN_COMMENT as columnComment
+        FROM information_schema.columns
+        WHERE table_name = 'music'
+            and (COLUMN_NAME = 'name' or COLUMN_NAME = 'singer' or COLUMN_NAME = 'style' or COLUMN_NAME = 'issue_date' or COLUMN_NAME = 'review_num') ;
+    </select>
+
 </mapper>

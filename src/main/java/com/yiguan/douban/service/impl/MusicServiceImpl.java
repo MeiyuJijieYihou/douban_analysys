@@ -1,7 +1,9 @@
 package com.yiguan.douban.service.impl;
 
+import com.google.common.base.CaseFormat;
 import com.yiguan.douban.entity.Music;
 import com.yiguan.douban.mapper.MusicMapper;
+import com.yiguan.douban.pojo.MusicColumnCommentPojo;
 import com.yiguan.douban.pojo.MusicNewCommentPojo;
 import com.yiguan.douban.pojo.SimpleMusicInfoPojo;
 import com.yiguan.douban.pojo.SimpleMusicPojo;
@@ -13,9 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author: chenfl
@@ -64,20 +64,28 @@ public class MusicServiceImpl implements MusicService {
         String fileName = "top" + number + "Musics.xls";
 
         // 创建表头
+        List<Map<String, String>> musicInfos = musicMapper.musicColumnComment();
         // java反射
         Class<SimpleMusicPojo> commentMusicPojoClass = SimpleMusicPojo.class;
         // 得到表头行
         HSSFRow header = sheet.createRow(0);
         // 插入排名字段头
-        header.createCell(0).setCellValue("Ranking");
+        header.createCell(0).setCellValue("排名");
         // 得到所有的成员变量
         Field[] declaredFields = commentMusicPojoClass.getDeclaredFields();
         for (int i = 0; i < declaredFields.length; i++) {
             // 创建表头单元格
             HSSFCell cell = header.createCell(i + 1);
             // 得到成员变量名称作为插入值
-            HSSFRichTextString hssfRichTextString = new HSSFRichTextString(declaredFields[i].getName());
-            cell.setCellValue(hssfRichTextString);
+            for (Map<String, String> musicInfo: musicInfos) {
+                String columnName = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, musicInfo.get("columnName"));
+                if (columnName.equals(declaredFields[i].getName())) {
+                    HSSFRichTextString hssfRichTextString =
+                            new HSSFRichTextString(musicInfo.get("columnComment"));
+                    cell.setCellValue(hssfRichTextString);
+                }
+            }
+
         }
 
         // 插入数据
@@ -134,6 +142,19 @@ public class MusicServiceImpl implements MusicService {
     @Override
     public List<MusicNewCommentPojo> topNMusicNewComment(Integer id, Integer num) {
         return musicMapper.topNMusicNewComment(id,num);
+    }
+
+    @Override
+    public List<Map<String, String>> test() {
+        List<Map<String, String>> musicInfos = musicMapper.musicColumnComment();
+        for (Map<String, String> musicInfo: musicInfos) {
+            Set<String> keys = musicInfo.keySet();
+            System.out.println(musicInfo.get("columnName"));
+//            for (String key: keys) {
+//                System.out.println(key + musicInfo.get());
+//            }
+        }
+        return musicMapper.musicColumnComment();
     }
 
 }

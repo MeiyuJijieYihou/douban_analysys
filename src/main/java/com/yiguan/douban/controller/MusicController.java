@@ -31,6 +31,7 @@ public class MusicController {
     @GetMapping("/h")
     @ApiOperation("测试显示")
     public String hello(){
+        System.out.println(musicService.test());
         return "MusicController Hello world!";
     }
 

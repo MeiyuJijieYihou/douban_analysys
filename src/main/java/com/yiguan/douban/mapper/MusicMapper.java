@@ -1,12 +1,15 @@
 package com.yiguan.douban.mapper;
 
 import com.yiguan.douban.entity.Music;
+import com.yiguan.douban.pojo.MusicColumnCommentPojo;
 import com.yiguan.douban.pojo.MusicNewCommentPojo;
 import com.yiguan.douban.pojo.SimpleMusicInfoPojo;
 import com.yiguan.douban.pojo.SimpleMusicPojo;
 import tk.mybatis.mapper.common.Mapper;
 
+import javax.print.DocFlavor;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author:  chenfl
@@ -43,4 +46,11 @@ public interface MusicMapper extends Mapper<Music> {
      * @return
      */
     List<MusicNewCommentPojo> topNMusicNewComment(Integer id, Integer num);
+
+    /**
+     * 查找数据库中音乐表导出到Excel表中的注释信息
+     * @return
+     */
+    List<Map<String, String>> musicColumnComment();
+
 }

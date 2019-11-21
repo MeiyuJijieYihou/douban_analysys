@@ -1,6 +1,7 @@
 package com.yiguan.douban.service;
 
 import com.yiguan.douban.entity.Music;
+import com.yiguan.douban.pojo.MusicColumnCommentPojo;
 import com.yiguan.douban.pojo.MusicNewCommentPojo;
 import com.yiguan.douban.pojo.SimpleMusicInfoPojo;
 import com.yiguan.douban.pojo.SimpleMusicPojo;
@@ -8,6 +9,7 @@ import io.swagger.models.auth.In;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author: Thomas chenfl
@@ -53,4 +55,6 @@ public interface MusicService {
      * @return
      */
     List<MusicNewCommentPojo> topNMusicNewComment(Integer id, Integer num);
+
+    List<Map<String, String>> test();
 }
