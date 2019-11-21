@@ -2,6 +2,7 @@ package com.yiguan.douban.controller;
 
 import com.yiguan.douban.entity.Comment;
 import com.yiguan.douban.pojo.MoviePojo;
+import com.yiguan.douban.pojo.SimpleMoviePojo;
 import com.yiguan.douban.service.MovieService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -49,7 +50,7 @@ public class MovieController {
 
     @GetMapping({"/topMovies/{num}", "/topMovies"})
     @ApiOperation("查询出当前一周评论最多的N个亚洲区域视频降序排列")
-    public List<MoviePojo> getTopMovies(@PathVariable(required = false) Integer num) {
+    public List<SimpleMoviePojo> getTopMovies(@PathVariable(required = false) Integer num) {
         if (null == num) {
             num = 50;
         } else if (num <= 0) {

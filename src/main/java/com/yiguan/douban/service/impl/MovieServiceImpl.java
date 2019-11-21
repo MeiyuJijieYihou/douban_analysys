@@ -5,6 +5,7 @@ import com.yiguan.douban.mapper.CommentMapper;
 import com.yiguan.douban.mapper.MovieMapper;
 import com.yiguan.douban.mapper.MovieRegionMapper;
 import com.yiguan.douban.pojo.MoviePojo;
+import com.yiguan.douban.pojo.SimpleMoviePojo;
 import com.yiguan.douban.service.MovieService;
 import org.springframework.stereotype.Service;
 
@@ -41,7 +42,7 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
-    public List<MoviePojo> findTopMovies(Integer num) {
+    public List<SimpleMoviePojo> findTopMovies(Integer num) {
         Date nowTime = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(nowTime);

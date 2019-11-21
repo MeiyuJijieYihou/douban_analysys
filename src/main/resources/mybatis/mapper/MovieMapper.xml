@@ -22,20 +22,26 @@
 	    introduction
     </sql>
 
-    <resultMap id="MovieRegion" type="com.yiguan.douban.pojo.MoviePojo">
+    <resultMap id="MovieRegion1" type="com.yiguan.douban.pojo.MoviePojo">
+        <id column="id" property="id"/>
+        <collection property="countriesRegions" select="com.yiguan.douban.mapper.MovieRegionMapper.selectCountriesRegionsByMovieId" column="id">
+        </collection>
+    </resultMap>
+
+    <resultMap id="MovieRegion2" type="com.yiguan.douban.pojo.SimpleMoviePojo">
         <id column="id" property="id"/>
         <collection property="countriesRegions" select="com.yiguan.douban.mapper.MovieRegionMapper.selectCountriesRegionsByMovieId" column="id">
         </collection>
     </resultMap>
     
-    <select id="selectAllMovies" resultMap="MovieRegion">
+    <select id="selectAllMovies" resultMap="MovieRegion1">
         SELECT
             <include refid="movie"/>
         FROM
             movie
     </select>
 
-    <select id="findMovieById" resultMap="MovieRegion">
+    <select id="findMovieById" resultMap="MovieRegion1">
         SELECT
         <include refid="movie"/>
         FROM
@@ -44,7 +50,7 @@
             id = #{id}
     </select>
 
-    <select id="selectTopMovies" resultMap="MovieRegion">
+    <select id="selectTopMovies" resultMap="MovieRegion2">
         SELECT
         id,
         name,
