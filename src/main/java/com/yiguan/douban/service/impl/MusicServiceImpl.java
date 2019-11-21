@@ -64,6 +64,7 @@ public class MusicServiceImpl implements MusicService {
         String fileName = "top" + number + "Musics.xls";
 
         // 创建表头
+        // 获取数据库的字段对应的注释
         List<Map<String, String>> musicInfos = musicMapper.musicColumnComment();
         // java反射
         Class<SimpleMusicPojo> commentMusicPojoClass = SimpleMusicPojo.class;
@@ -77,9 +78,12 @@ public class MusicServiceImpl implements MusicService {
             // 创建表头单元格
             HSSFCell cell = header.createCell(i + 1);
             // 得到成员变量名称作为插入值
+            // 插入的表头字段为数据库的字段注释
             for (Map<String, String> musicInfo: musicInfos) {
+                // 下划线分割命名转小驼峰命名
                 String columnName = CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, musicInfo.get("columnName"));
                 if (columnName.equals(declaredFields[i].getName())) {
+                    // 新建表头单元格并插入数据库字段的注释作为表头
                     HSSFRichTextString hssfRichTextString =
                             new HSSFRichTextString(musicInfo.get("columnComment"));
                     cell.setCellValue(hssfRichTextString);
@@ -141,20 +145,7 @@ public class MusicServiceImpl implements MusicService {
 
     @Override
     public List<MusicNewCommentPojo> topNMusicNewComment(Integer id, Integer num) {
-        return musicMapper.topNMusicNewComment(id,num);
-    }
-
-    @Override
-    public List<Map<String, String>> test() {
-        List<Map<String, String>> musicInfos = musicMapper.musicColumnComment();
-        for (Map<String, String> musicInfo: musicInfos) {
-            Set<String> keys = musicInfo.keySet();
-            System.out.println(musicInfo.get("columnName"));
-//            for (String key: keys) {
-//                System.out.println(key + musicInfo.get());
-//            }
-        }
-        return musicMapper.musicColumnComment();
+        return musicMapper.topNMusicNewComment(id, num);
     }
 
 }

@@ -56,5 +56,4 @@ public interface MusicService {
      */
     List<MusicNewCommentPojo> topNMusicNewComment(Integer id, Integer num);
 
-    List<Map<String, String>> test();
 }
