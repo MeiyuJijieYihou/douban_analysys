@@ -4,9 +4,9 @@
 
     <select id="topSort" resultType="com.yiguan.douban.pojo.BookTagPojo">
         SELECT t1.sort
-        FROM book_tag AS t1
+        FROM tag AS t1
         WHERE t1.number=(SELECT MAX(t2.number)
-                         FROM book_tag as t2)
+                         FROM tag as t2)
     </select>
 
     <select id="topBook" resultType="com.yiguan.douban.pojo.BookPojo">
