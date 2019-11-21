@@ -2,6 +2,7 @@ package com.yiguan.douban.service;
 
 import com.yiguan.douban.entity.Comment;
 import com.yiguan.douban.pojo.MoviePojo;
+import com.yiguan.douban.pojo.SimpleMoviePojo;
 
 import java.util.List;
 
@@ -43,7 +44,7 @@ public interface MovieService {
      * @author LiBingxiang
      * @date 2019/11/17 20:15
      */
-    List<MoviePojo> findTopMovies(Integer num);
+    List<SimpleMoviePojo> findTopMovies(Integer num);
 
     /**
      * description: 根据电影id查找最新的N/2条电影短评论和N/2条电影影评

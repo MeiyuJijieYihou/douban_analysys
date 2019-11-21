@@ -4,20 +4,19 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
-import javax.persistence.Id;
 import java.util.List;
 
 /**
- * Description: 用于封装电影信息
+ * Description: 用于封装评论榜前N的亚洲电影
  *
  * @author LiBingxiang
  * @version 1.0
- * @date 2019/11/12 19:44
+ * @date 2019/11/21 19:29
  * @since JDK 1.8
  */
-@ApiModel("电影信息")
+@ApiModel("评论榜前N的亚洲电影")
 @Data
-public class MoviePojo {
+public class SimpleMoviePojo {
 
     /**
      * 电影id
@@ -62,46 +61,10 @@ public class MoviePojo {
     private List<String> countriesRegions;
 
     /**
-     * 语言
-     */
-    @ApiModelProperty("电影语言")
-    private String language;
-
-    /**
      * 上映日期
      */
     @ApiModelProperty("上映日期")
     private String date;
-
-    /**
-     * 片长
-     */
-    @ApiModelProperty("片长")
-    private Long length;
-
-    /**
-     * 又名
-     */
-    @ApiModelProperty("电影别名")
-    private String otherName;
-
-    /**
-     * IMDb
-     */
-    @ApiModelProperty("IMDb")
-    private String imDb;
-
-    /**
-     * 短评数量
-     */
-    @ApiModelProperty("短评数量")
-    private Long shortCommentNumber;
-
-    /**
-     * 影评数量
-     */
-    @ApiModelProperty("影评数量")
-    private Long commentNumber;
 
     /**
      * 豆瓣评分
@@ -110,21 +73,9 @@ public class MoviePojo {
     private Double score;
 
     /**
-     * 评分人数
-     */
-    @ApiModelProperty("评分人数")
-    private Integer scoreNumber;
-
-    /**
      * 电影封面url
      */
     @ApiModelProperty("电影封面url")
     private String coverUrl;
-
-    /**
-     * 电影简介
-     */
-    @ApiModelProperty("电影简介")
-    private String introduction;
 
 }

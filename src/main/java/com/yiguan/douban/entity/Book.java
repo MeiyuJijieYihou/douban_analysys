@@ -7,9 +7,9 @@ import lombok.Data;
 import javax.persistence.Id;
 
 /**
- * @Author: 付晓
- * @Date: 2019/11/14
  * @Description: 书籍类
+ * @Author: 付晓
+ * @Date: 2019/11/21
  */
 @Data
 @ApiModel("书籍")

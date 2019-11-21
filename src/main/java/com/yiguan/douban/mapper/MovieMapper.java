@@ -1,6 +1,7 @@
 package com.yiguan.douban.mapper;
 
 import com.yiguan.douban.pojo.MoviePojo;
+import com.yiguan.douban.pojo.SimpleMoviePojo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -43,5 +44,5 @@ public interface MovieMapper {
      * @author LiBingxiang
      * @date 2019/11/17 20:19
      */
-    List<MoviePojo> selectTopMovies(@Param("preTime") String preTime, @Param("nowTime") String nowTime, @Param("num") Integer num);
+    List<SimpleMoviePojo> selectTopMovies(@Param("preTime") String preTime, @Param("nowTime") String nowTime, @Param("num") Integer num);
 }
