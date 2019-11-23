@@ -3,6 +3,7 @@ package com.yiguan.douban.controller;
 import com.yiguan.douban.entity.Book;
 import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
+import com.yiguan.douban.pojo.BookTagPojo;
 import com.yiguan.douban.service.BookService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -41,6 +42,14 @@ public class BookController {
         List<Book> list = bookService.findAllBook();
         return list;
     }
+
+    @GetMapping("/get/femaleSort")
+    @ApiOperation("查询最受女性欢迎的标签，返回其对应的标签id，标签名")
+    public BookTagPojo femaleSort(){
+        BookTagPojo bookTagPojo = bookService.femaleSort();
+        return bookTagPojo;
+    }
+
 
     @GetMapping("/get/{id}")
     @ApiOperation("根据id查询书籍")

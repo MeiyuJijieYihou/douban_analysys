@@ -3,7 +3,9 @@ package com.yiguan.douban.service;
 import com.yiguan.douban.entity.Book;
 import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
+import com.yiguan.douban.pojo.BookTagPojo;
 import io.swagger.models.auth.In;
+import lombok.Data;
 
 import java.util.List;
 
@@ -31,6 +33,11 @@ public interface BookService {
      * 查询最火的书籍标签
      */
     public String topSort();
+
+    /**
+     * 查询最火的最受女性欢迎的书籍标签
+     */
+    public BookTagPojo femaleSort();
     
     /**
     *@Description: 最火类目书籍降序排行，排行数目由前端传入，默认为10

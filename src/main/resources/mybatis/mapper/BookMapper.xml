@@ -9,6 +9,13 @@
                          FROM tag as t2)
     </select>
 
+    <select id="femaleSort" resultType="com.yiguan.douban.pojo.BookTagPojo">
+        SELECT t1.tid,t1.sort
+        FROM tag t1
+        WHERE female_number=(SELECT MAX(female_number)
+							 FROM tag t2)
+    </select>
+
     <select id="topBook" resultType="com.yiguan.douban.pojo.BookPojo">
         SELECT a.id, a.`name`,a.author,a.cover,a.introduction
         FROM book a

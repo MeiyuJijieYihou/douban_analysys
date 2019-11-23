@@ -54,6 +54,14 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
+     * 查询最火的最受女性欢迎的书籍标签（标签id，标签名，即一个BookTag实例化对象）
+     */
+    @Override
+    public BookTagPojo femaleSort() {
+        return bookMapper.femaleSort();
+    }
+
+    /**
      * 查询最火标签下 评论数最多的10本书，降序排列
      */
     @Override
