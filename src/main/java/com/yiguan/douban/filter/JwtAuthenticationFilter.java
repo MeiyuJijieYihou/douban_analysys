@@ -1,7 +1,7 @@
 package com.yiguan.douban.filter;
 
 import com.yiguan.douban.service.impl.MyUserDetailsServiceImpl;
-import com.yiguan.douban.utils.JwtTokenProvider;
+import com.yiguan.douban.util.JwtTokenProvider;
 import io.jsonwebtoken.Jwts;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Description:
+ * Description: Taken验证拦截器
  *
  * @author LiBingxiang
  * @version 1.0
@@ -37,7 +37,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String token = getJwtFromRequest(request);
 
         if (token != null && jwtTokenProvider.validateToken(token)) {
-            String username = getUsernameFromJwt(token, JwtTokenProvider.jwtTokenSecret);
+            String username = getUsernameFromJwt(token, JwtTokenProvider.JWT_TOKEN_SECRET);
             UserDetails userDetails = userService.loadUserByUsername(username);
             Authentication authentication = new UsernamePasswordAuthenticationToken(
                     userDetails,null,userDetails.getAuthorities());

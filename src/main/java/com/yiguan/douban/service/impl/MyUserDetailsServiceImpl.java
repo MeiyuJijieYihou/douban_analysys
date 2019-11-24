@@ -29,6 +29,14 @@ public class MyUserDetailsServiceImpl implements UserDetailsService {
     @Resource
     private SysUserMapper sysUserMapper;
 
+    /**
+     * description: 加载用户信息
+     *
+     * @params [username]
+     * @return org.springframework.security.core.userdetails.UserDetails
+     * @author LiBingxiang
+     * @date 2019/11/24 21:22
+     */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         SysUser user = sysUserMapper.findUserByUsername(username);
