@@ -2,6 +2,7 @@ package com.yiguan.douban.service.impl;
 
 import com.yiguan.douban.entity.Book;
 import com.yiguan.douban.mapper.BookMapper;
+import com.yiguan.douban.pojo.BookGetUserIdPojo;
 import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
 import com.yiguan.douban.pojo.BookTagPojo;
@@ -70,5 +71,29 @@ public class BookServiceImpl implements BookService {
     public List<BookNewCommentPojo> topNBookNewComment(Integer id, Integer num){
         List<BookNewCommentPojo> bookcomments = bookMapper.topNBookNewComment(id,num);
         return bookcomments;
+    }
+
+    /**
+     *书籍id获取所有评论对应的用户id，统计女性人数，加到各种类记录，返回最受欢迎种类
+     */
+    @Override
+    public  String getFemaleBookLike() {
+
+        /**
+         * 获取排名的书籍的id
+         */
+        List<BookPojo> books = topBook(5);
+
+        // for(int i = 0; i < 5; i++ ){
+        List<BookGetUserIdPojo> bookGetUserIdPojos = bookMapper.getUserIdByComment(books.get(0).getId());
+        /**
+         * ....
+         * 获取所有女性数目
+         */
+         bookMapper.setSortFemaleNum(books.get(0).getId(),20);
+
+        //}
+        String sort = bookMapper.getFemaleSortLike();
+        return sort;
     }
 }

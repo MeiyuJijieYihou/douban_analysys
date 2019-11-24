@@ -1,6 +1,7 @@
 package com.yiguan.douban.controller;
 
 import com.yiguan.douban.entity.Book;
+import com.yiguan.douban.pojo.BookGetUserIdPojo;
 import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
 import com.yiguan.douban.service.BookService;
@@ -64,5 +65,11 @@ public class BookController {
             num = 10;
         }
         return bookService.topNBookNewComment(id,num);
+    }
+
+    @GetMapping("/get/femaleBookLike")
+    @ApiOperation("最受女性欢迎的书的类别")
+    public String  getFemaleBookLike(){
+        return bookService.getFemaleBookLike();
     }
 }

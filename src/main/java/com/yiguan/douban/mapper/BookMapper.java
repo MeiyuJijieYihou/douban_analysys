@@ -1,6 +1,7 @@
 package com.yiguan.douban.mapper;
 
 import com.yiguan.douban.entity.Book;
+import com.yiguan.douban.pojo.BookGetUserIdPojo;
 import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
 import com.yiguan.douban.pojo.BookTagPojo;
@@ -33,4 +34,15 @@ public interface BookMapper extends Mapper<Book> {
      */
     List<BookNewCommentPojo> topNBookNewComment(Integer id,Integer num);
 
+    /**
+     * 根据书籍的id找到所有评论，通过评论找到对应的用户id
+     */
+    List<BookGetUserIdPojo> getUserIdByComment(Long id);
+
+    /**
+     * 查到该本书的类别，并给该类别加上该书女评的数目
+     * @return sort
+     */
+    void setSortFemaleNum(Long id, int num);
+    String getFemaleSortLike();
 }
