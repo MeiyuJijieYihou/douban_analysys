@@ -27,9 +27,4 @@ public class CommentController {
     @Autowired
     CommentService commentService;
 
-    @GetMapping("/get")
-    @ApiOperation("获取所有评论信息")
-    public List<Comment> getAllComment() {
-        return commentService.findAllComment();
-    }
 }
