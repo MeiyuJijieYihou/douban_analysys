@@ -7,7 +7,6 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 @MapperScan("com.yiguan.douban.mapper")
-
 @EnableSwagger2
 public class DoubanAnalysysApplication {
 

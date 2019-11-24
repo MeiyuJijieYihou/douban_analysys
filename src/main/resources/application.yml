@@ -17,3 +17,15 @@ spring:
 #      - classpath:data.sql
     initialization-mode: always
 
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+
+security:
+  basic:
+    enabled: false
+
