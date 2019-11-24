@@ -24,8 +24,7 @@
 
     <resultMap id="MovieRegion1" type="com.yiguan.douban.pojo.MoviePojo">
         <id column="id" property="id"/>
-        <collection property="countriesRegions" select="com.yiguan.douban.mapper.MovieRegionMapper.selectCountriesRegionsByMovieId" column="id">
-        </collection>
+        <collection property="countriesRegions" select="com.yiguan.douban.mapper.MovieRegionMapper.selectCountriesRegionsByMovieId" column="id"/>
     </resultMap>
 
     <resultMap id="MovieRegion2" type="com.yiguan.douban.pojo.SimpleMoviePojo">

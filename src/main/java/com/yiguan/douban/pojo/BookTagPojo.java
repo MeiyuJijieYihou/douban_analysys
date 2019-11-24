@@ -16,6 +16,12 @@ import lombok.Data;
 public class BookTagPojo {
 
     /**
+     * 标签tid
+     */
+    @ApiModelProperty("标签tid")
+    private Long tid;
+
+    /**
      * 书籍标签
      */
     @ApiModelProperty("书籍标签")

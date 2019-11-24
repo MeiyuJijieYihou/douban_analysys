@@ -26,21 +26,8 @@ import java.util.List;
 @RequestMapping("/api/movie")
 @Api(description = "电影相关接口文档")
 public class MovieController {
-
     @Autowired
     private MovieService movieService;
-
-    @GetMapping("/sayHello")
-    @ApiOperation("测试接口")
-    public String sayHello() {
-        return "Hello, welcome to MovieController";
-    }
-
-    @GetMapping("/get")
-    @ApiOperation("获取所有电影信息")
-    public List<MoviePojo> getAllMovies() {
-        return movieService.findAllMovies();
-    }
 
     @GetMapping("/get/{id}")
     @ApiOperation("根据电影id获取电影信息")

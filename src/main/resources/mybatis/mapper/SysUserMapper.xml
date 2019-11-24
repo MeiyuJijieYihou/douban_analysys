@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yiguan.douban.mapper.SysUserMapper">
+
+    <resultMap id="userRole" type="com.yiguan.douban.entity.SysUser">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <collection property="roles" column="username" select="com.yiguan.douban.mapper.SysUserMapper.findRolesByUsername"/>
+    </resultMap>
+
+    <resultMap id="rolePermission" type="com.yiguan.douban.entity.SysRole">
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <collection property="permissions" column="name" select="com.yiguan.douban.mapper.SysUserMapper.findPermissionsByUsername"/>
+    </resultMap>
+
+    <select id="findUserByUsername" resultMap="userRole">
+        SELECT
+            id,
+            password,
+            username
+        FROM
+            sys_user
+        WHERE
+            username = #{username}
+    </select>
+
+    <select id="findRolesByUsername" resultMap="rolePermission">
+        SELECT
+            sr.*
+        FROM
+            sys_user su
+            LEFT JOIN sys_user_role sur ON su.id = sur.sys_user_id
+            LEFT JOIN sys_role sr ON sur.sys_role_id = sr.id
+        WHERE
+            su.username = #{username}
+    </select>
+
+    <select id="findPermissionsByUsername" resultType="com.yiguan.douban.entity.SysPermission">
+        SELECT
+            sp.*
+        FROM
+            sys_user su
+            LEFT JOIN sys_user_role sur ON su.id = sur.sys_user_id
+            LEFT JOIN sys_role_permission srp ON sur.sys_role_id = srp.sys_role_id
+            LEFT JOIN sys_permission sp ON srp.sys_permission_id = sp.id
+        WHERE
+            su.username = #{username}
+    </select>
+
+    <select id="findAllRolePermission" resultType="com.yiguan.douban.entity.SysRolePermission">
+        SELECT
+            sr.id roleId,
+            sr.NAME roleName,
+            sp.id permissionId,
+            sp.url
+        FROM
+            sys_role_permission srp
+            LEFT JOIN sys_role sr ON sr.id = srp.sys_role_id
+            LEFT JOIN sys_permission sp ON srp.sys_permission_id = sp.id
+    </select>
+</mapper>

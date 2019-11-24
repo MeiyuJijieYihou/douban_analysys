@@ -23,6 +23,11 @@ public interface BookMapper extends Mapper<Book> {
      * 查询最火的书籍标签
      */
      BookTagPojo topSort();
+
+    /**
+     * 查询最火的最受女性欢迎的书籍标签
+     */
+    BookTagPojo femaleSort();
     
     /**
     * 最火类目书籍降序排行，排行数目由前端传入，默认为10
