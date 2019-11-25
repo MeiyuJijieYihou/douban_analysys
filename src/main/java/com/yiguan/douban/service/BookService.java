@@ -40,6 +40,15 @@ public interface BookService {
      * 查询最火的最受女性欢迎的书籍标签
      */
     public BookTagPojo femaleSort();
+
+
+    /**
+     * 前端输入一个书籍标签sort、一个数目num，获取该书籍标签下最火的num本书
+     * @param sort
+     * @param num
+     * @return
+     */
+    public List<BookPojo> getBySortNum(String sort, Integer num);
     
     /**
     *@Description: 最火类目书籍降序排行，排行数目由前端传入，默认为10
