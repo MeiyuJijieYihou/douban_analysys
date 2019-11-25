@@ -1,6 +1,6 @@
 package com.yiguan.douban.config;
 
-import com.yiguan.douban.utils.JwtTokenProvider;
+import com.yiguan.douban.util.JwtTokenProvider;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;

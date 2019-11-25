@@ -65,15 +65,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
 
                 .and()
-                .formLogin().loginPage("/api/login")
-                .defaultSuccessUrl("/api/index")
+                .formLogin()
                 .successHandler(successHandler).permitAll()
 
                 .and()
                 .logout().permitAll();*/
-        http.authorizeRequests()
-                .antMatchers("/css/**", "/js/**").permitAll()
-                .anyRequest().permitAll();
+        http.authorizeRequests().anyRequest().permitAll();
     }
 
     @Bean
@@ -85,9 +82,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
-    }
-
-    public static void main(String[] args) {
-        System.out.println(new BCryptPasswordEncoder().encode("admin"));
     }
 }
