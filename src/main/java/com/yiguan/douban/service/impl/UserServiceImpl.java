@@ -38,16 +38,18 @@ public class UserServiceImpl implements UserService {
     @Override
     public void setIsFemale() throws IOException, InterruptedException {
         List<User> users = selectUsers();
-        for( int i = 0; i < 10; i++ ) {
-            if (JudgeGenderUtil.isFemale(users.get(i).getId())) {
-                
-                userMapper.setIsFemale(users.get(i).getId());
+        for(User user: users) {
+            if (JudgeGenderUtil.isFemale(user.getId())) {
+                user.setInferred_sex(true);
+                userMapper.updateByPrimaryKeySelective(user);
             }
             else{
-                userMapper.setIsMale(users.get(i).getId());
+                user.setInferred_sex(false);
+                userMapper.updateByPrimaryKeySelective(user);
             }
-            System.out.println(users.get(i).getId());
-            System.out.println(JudgeGenderUtil.isFemale(users.get(i).getId()));
+
+            System.out.println(user.getId());
+            System.out.println(JudgeGenderUtil.isFemale(user.getId()));
         }
     }
 }

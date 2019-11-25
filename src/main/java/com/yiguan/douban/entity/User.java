@@ -40,5 +40,5 @@ public class User {
    * 用户性别
    */
   @ApiModelProperty("用户性别")
-  private int inferred_sex;
+  private Boolean inferred_sex;
 }

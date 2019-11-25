@@ -6,18 +6,6 @@
         SELECT *
         FROM `douban_analysys`.`user`
         where inferred_sex is null
-        LIMIT 1000
+        LIMIT 10
     </select>
-
-    <update id="setIsFemale">
-        update user
-        set inferred_sex = 1
-        where id = #{id}
-    </update>
-
-    <update id="setIsMale">
-        update user
-        set inferred_sex = 0
-        where id = #{id}
-    </update>
 </mapper>
