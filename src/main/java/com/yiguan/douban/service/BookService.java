@@ -8,6 +8,7 @@ import com.yiguan.douban.pojo.BookTagPojo;
 import io.swagger.models.auth.In;
 import lombok.Data;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -51,8 +52,10 @@ public interface BookService {
     public List<BookNewCommentPojo> topNBookNewComment(Integer id, Integer num);
 
     /**
-     * 获取最受女性欢迎的书籍的种类
+     *通过书籍评论的用户性别设置各种类女性的数目
      */
-    public String getFemaleBookLike();
+    public void setTagFemale();
+
+
 
 }

@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -76,9 +77,10 @@ public class BookController {
         return bookService.topNBookNewComment(id,num);
     }
 
-    @GetMapping("/get/femaleBookLike")
-    @ApiOperation("最受女性欢迎的书的类别")
-    public String  getFemaleBookLike(){
-        return bookService.getFemaleBookLike();
+    @GetMapping("/set/setTagFemale")
+    @ApiOperation("通过书籍评论的用户性别设置各种类女性的数目")
+    public void  setTagFemale() throws IOException, InterruptedException {
+       bookService.setTagFemale();
     }
+
 }

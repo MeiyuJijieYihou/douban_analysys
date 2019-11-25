@@ -46,8 +46,11 @@ public interface BookMapper extends Mapper<Book> {
 
     /**
      * 查到该本书的类别，并给该类别加上该书女评的数目
-     * @return sort
      */
     void setSortFemaleNum(Long id, int num);
-    String getFemaleSortLike();
+
+    /**
+     * 获取用户是否为女性
+     */
+    Integer getIsFemale(String userId);
 }

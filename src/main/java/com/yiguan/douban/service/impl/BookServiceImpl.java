@@ -7,9 +7,12 @@ import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
 import com.yiguan.douban.pojo.BookTagPojo;
 import com.yiguan.douban.service.BookService;
+import com.yiguan.douban.util.JudgeGenderUtil;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.genid.GenId;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,26 +85,21 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
-     *书籍id获取所有评论对应的用户id，统计女性人数，加到各种类记录，返回最受欢迎种类
+     *书籍id获取所有评论对应的用户id，统计女性人数，加到各种类记录
      */
     @Override
-    public  String getFemaleBookLike() {
+    public  void setTagFemale(){
 
-        /**
-         * 获取排名的书籍的id
-         */
-        List<BookPojo> books = topBook(5);
-
-        // for(int i = 0; i < 5; i++ ){
-        List<BookGetUserIdPojo> bookGetUserIdPojos = bookMapper.getUserIdByComment(books.get(0).getId());
-        /**
-         * ....
-         * 获取所有女性数目
-         */
-         bookMapper.setSortFemaleNum(books.get(0).getId(),20);
-
-        //}
-        String sort = bookMapper.getFemaleSortLike();
-        return sort;
+        List<BookPojo> books = topBook(50);
+        for(int i = 0; i < 50; i++ ){
+            List<BookGetUserIdPojo> bookGetUserIdPojos = bookMapper.getUserIdByComment(books.get(i).getId());
+            int count = 0;
+            for( BookGetUserIdPojo book : bookGetUserIdPojos ){
+                if(bookMapper.getIsFemale(book.getUserId())==null){
+                    count++;
+                }
+            }
+            bookMapper.setSortFemaleNum(books.get(i).getId(),count);
+        }
     }
 }

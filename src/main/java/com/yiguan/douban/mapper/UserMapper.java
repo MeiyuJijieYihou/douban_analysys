@@ -13,4 +13,9 @@ import java.util.List;
 public interface UserMapper extends Mapper<User> {
 
 
+    List<User> selectUsers();
+
+    void setIsFemale(String id);
+
+    void setIsMale(String id);
 }
