@@ -47,9 +47,6 @@ public class UserServiceImpl implements UserService {
                 user.setInferred_sex(false);
                 userMapper.updateByPrimaryKeySelective(user);
             }
-
-            System.out.println(user.getId());
-            System.out.println(JudgeGenderUtil.isFemale(user.getId()));
         }
     }
 }

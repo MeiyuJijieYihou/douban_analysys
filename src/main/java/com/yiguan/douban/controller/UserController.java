@@ -33,13 +33,6 @@ public class UserController {
         return "UserController Hello world!";
     }
 
-    @GetMapping("/get")
-    @ApiOperation("获取所有用户信息")
-    public List<User> getAllUser() {
-        List<User> list = userService.selectUsers();
-        return list;
-    }
-
     @GetMapping("/get/{id}")
     @ApiOperation("通过id获取用户信息")
     public User getUser(@PathVariable String id){
