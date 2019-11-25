@@ -6,6 +6,6 @@
         SELECT *
         FROM `douban_analysys`.`user`
         where inferred_sex is null
-        LIMIT 10
+        LIMIT 1000
     </select>
 </mapper>
