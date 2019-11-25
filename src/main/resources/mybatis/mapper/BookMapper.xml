@@ -39,4 +39,26 @@
         ORDER BY c.date DESC
         LIMIT 0,#{num}
     </select>
+
+    <select id="getUserIdByComment" resultType="com.yiguan.douban.pojo.BookGetUserIdPojo">
+        	SELECT  user_id
+        	FROM  book b,comment c
+        	WHERE b.id=#{id} AND b.id=c.target_id
+    </select>
+
+    <update id="setSortFemaleNum">
+            UPDATE tag
+            SET female_number = female_number + #{num}
+            WHERE INSTR(
+            (SELECT book.sort
+            FROM book
+            WHERE id = #{id}),tag.sort)>0
+    </update>
+
+    <select id="getIsFemale" resultType="java.lang.Integer">
+            select inferred_sex
+            from user
+            where id = #{userId}
+    </select>
+
 </mapper>

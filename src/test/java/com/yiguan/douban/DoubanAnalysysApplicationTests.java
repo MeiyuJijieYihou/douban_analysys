@@ -1,14 +1,10 @@
 package com.yiguan.douban;
 
 
-import com.yiguan.douban.mapper.MusicMapper;
 import com.yiguan.douban.pojo.SimpleMusicPojo;
-import com.yiguan.douban.service.MusicService;
-import com.yiguan.douban.service.impl.MusicServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.annotation.Resource;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Date;

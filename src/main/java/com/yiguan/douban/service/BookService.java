@@ -1,12 +1,14 @@
 package com.yiguan.douban.service;
 
 import com.yiguan.douban.entity.Book;
+import com.yiguan.douban.pojo.BookGetUserIdPojo;
 import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
 import com.yiguan.douban.pojo.BookTagPojo;
 import io.swagger.models.auth.In;
 import lombok.Data;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -57,4 +59,12 @@ public interface BookService {
      * 根据id查询书籍的前Num条最新评论,Num、id均为前端传入，Num默认为10
      */
     public List<BookNewCommentPojo> topNBookNewComment(Integer id, Integer num);
+
+    /**
+     *通过书籍评论的用户性别设置各种类女性的数目
+     */
+    public void setTagFemale();
+
+
+
 }

@@ -3,9 +3,11 @@ package com.yiguan.douban.service.impl;
 import com.yiguan.douban.entity.User;
 import com.yiguan.douban.mapper.UserMapper;
 import com.yiguan.douban.service.UserService;
+import com.yiguan.douban.util.JudgeGenderUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,9 +23,9 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public List<User> findAllUser() {
+    public List<User> selectUsers() {
         List<User> list = new ArrayList<>();
-        list = userMapper.selectAll();
+        list = userMapper.selectUsers();
         return list;
     }
 
@@ -31,5 +33,23 @@ public class UserServiceImpl implements UserService {
     public User getUserById(String id){
         User user = userMapper.selectByPrimaryKey(id);
         return user;
+    }
+
+    @Override
+    public void setIsFemale() throws IOException, InterruptedException {
+        List<User> users = selectUsers();
+        for(User user: users) {
+            if (JudgeGenderUtil.isFemale(user.getId())) {
+                user.setInferred_sex(true);
+                userMapper.updateByPrimaryKeySelective(user);
+            }
+            else{
+                user.setInferred_sex(false);
+                userMapper.updateByPrimaryKeySelective(user);
+            }
+
+            System.out.println(user.getId());
+            System.out.println(JudgeGenderUtil.isFemale(user.getId()));
+        }
     }
 }

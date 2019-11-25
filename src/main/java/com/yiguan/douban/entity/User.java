@@ -36,4 +36,9 @@ public class User {
   @ApiModelProperty("用户头像")
   private String head;
 
+  /**
+   * 用户性别
+   */
+  @ApiModelProperty("用户性别")
+  private Boolean inferred_sex;
 }

@@ -1,6 +1,7 @@
 package com.yiguan.douban.controller;
 
 import com.yiguan.douban.entity.Book;
+import com.yiguan.douban.pojo.BookGetUserIdPojo;
 import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
 import com.yiguan.douban.pojo.BookTagPojo;
@@ -11,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -82,4 +84,11 @@ public class BookController {
         }
         return bookService.topNBookNewComment(id,num);
     }
+
+    @GetMapping("/set/setTagFemale")
+    @ApiOperation("通过书籍评论的用户性别设置各种类女性的数目")
+    public void  setTagFemale() throws IOException, InterruptedException {
+       bookService.setTagFemale();
+    }
+
 }

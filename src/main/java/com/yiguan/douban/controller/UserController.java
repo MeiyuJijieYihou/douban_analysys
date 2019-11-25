@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -35,7 +36,7 @@ public class UserController {
     @GetMapping("/get")
     @ApiOperation("获取所有用户信息")
     public List<User> getAllUser() {
-        List<User> list = userService.findAllUser();
+        List<User> list = userService.selectUsers();
         return list;
     }
 
@@ -49,5 +50,11 @@ public class UserController {
     @ApiOperation("jenkins自动化构建测试")
     public String testJenkins() {
         return "hello, this is jenkins test";
+    }
+
+    @GetMapping("/set/setIsFemale")
+    @ApiOperation("设置用户是否为女性（Female:1）")
+    public void setIsFemale() throws IOException, InterruptedException {
+        userService.setIsFemale();
     }
 }

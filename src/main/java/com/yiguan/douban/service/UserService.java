@@ -2,6 +2,7 @@ package com.yiguan.douban.service;
 
 import com.yiguan.douban.entity.User;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -12,10 +13,10 @@ import java.util.List;
 public interface UserService {
     /**
      *
-     * 获取所有用户信息
+     * 获取用户信息
      * @return
      */
-    public List<User> findAllUser();
+    public List<User> selectUsers();
 
     /**
      *
@@ -24,4 +25,9 @@ public interface UserService {
      * @return
      */
     public User getUserById(String id);
+
+    /**
+     * 更新用户性别
+     */
+    void setIsFemale() throws IOException, InterruptedException;
 }

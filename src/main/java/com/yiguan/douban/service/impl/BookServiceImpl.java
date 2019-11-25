@@ -2,13 +2,17 @@ package com.yiguan.douban.service.impl;
 
 import com.yiguan.douban.entity.Book;
 import com.yiguan.douban.mapper.BookMapper;
+import com.yiguan.douban.pojo.BookGetUserIdPojo;
 import com.yiguan.douban.pojo.BookNewCommentPojo;
 import com.yiguan.douban.pojo.BookPojo;
 import com.yiguan.douban.pojo.BookTagPojo;
 import com.yiguan.douban.service.BookService;
+import com.yiguan.douban.util.JudgeGenderUtil;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.genid.GenId;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,5 +93,24 @@ public class BookServiceImpl implements BookService {
     public List<BookNewCommentPojo> topNBookNewComment(Integer id, Integer num){
         List<BookNewCommentPojo> bookcomments = bookMapper.topNBookNewComment(id,num);
         return bookcomments;
+    }
+
+    /**
+     *书籍id获取所有评论对应的用户id，统计女性人数，加到各种类记录
+     */
+    @Override
+    public  void setTagFemale(){
+
+        List<BookPojo> books = topBook(50);
+        for(int i = 0; i < 50; i++ ){
+            List<BookGetUserIdPojo> bookGetUserIdPojos = bookMapper.getUserIdByComment(books.get(i).getId());
+            int count = 0;
+            for( BookGetUserIdPojo book : bookGetUserIdPojos ){
+                if(bookMapper.getIsFemale(book.getUserId())==null){
+                    count++;
+                }
+            }
+            bookMapper.setSortFemaleNum(books.get(i).getId(),count);
+        }
     }
 }
