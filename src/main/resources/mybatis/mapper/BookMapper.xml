@@ -24,6 +24,14 @@
         LIMIT 0,#{num}
     </select>
 
+    <select id="getBySortNum" resultType="com.yiguan.douban.pojo.BookPojo">
+        SELECT a.id, a.`name`,a.author,a.cover,a.introduction
+        FROM book a
+        WHERE INSTR(a.sort,#{sort})>0
+        ORDER BY a.number DESC
+        LIMIT 0,#{num}
+    </select>
+
     <select id="topNBookNewComment" resultType="com.yiguan.douban.pojo.BookNewCommentPojo">
         SELECT b.name,b.author,b.cover,c.content,c.date
         FROM book b,comment c

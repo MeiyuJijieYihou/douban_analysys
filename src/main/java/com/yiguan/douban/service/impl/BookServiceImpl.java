@@ -62,6 +62,17 @@ public class BookServiceImpl implements BookService {
     }
 
     /**
+     * 前端输入一个书籍标签sort、一个数目num，获取该书籍标签下最火的num本书
+     * @param sort
+     * @param num
+     * @return
+     */
+    @Override
+    public List<BookPojo> getBySortNum(String sort, Integer num) {
+        return bookMapper.getBySortNum(sort,num);
+    }
+
+    /**
      * 查询最火标签下 评论数最多的10本书，降序排列
      */
     @Override
