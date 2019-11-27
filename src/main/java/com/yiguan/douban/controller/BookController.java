@@ -58,7 +58,7 @@ public class BookController {
         return bookService.findBookById(id);
     }
 
-    @GetMapping({"/getBySortNum/{sort}/{num}"})
+    @GetMapping({"/getBySortNum/{sort}/{num}","/getBySortNum/{sort}"})
     @ApiOperation("前端输入一个书籍标签sort、一个数目num，获取该书籍标签下最火的num(若无输入，默认为10)本书")
     public List<BookPojo> getBySortNum(@PathVariable String sort,@PathVariable(required=false)Integer num){
         if(null == num){
