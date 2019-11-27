@@ -38,13 +38,6 @@ public class BookController {
         return "BookController Hello World!";
     }
 
-    @GetMapping("/get")
-    @ApiOperation("查询所有书籍")
-    public List<Book> getAllBook(){
-        List<Book> list = bookService.findAllBook();
-        return list;
-    }
-
     @GetMapping("/get/femaleSort")
     @ApiOperation("查询最受女性欢迎的标签，返回其对应的标签id，标签名")
     public BookTagPojo femaleSort(){
